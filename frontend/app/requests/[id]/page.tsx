@@ -50,7 +50,7 @@ function MatchResultsContent() {
       <div className="flex items-center justify-between">
         <Link
           href="/requests"
-          className="inline-flex items-center gap-2 font-mono text-xs text-[#999999] hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 font-mono text-xs text-slate-500 hover:text-slate-900 transition-colors font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>&larr; Back to Requests Board</span>
@@ -58,32 +58,32 @@ function MatchResultsContent() {
 
         <div className="flex items-center gap-2">
           <StatusChip status="PASS" label="AI INFERENCE COMPLETE" />
-          <span className="font-mono text-xs text-[#999999]">
+          <span className="font-mono text-xs text-slate-500">
             ID: {requestId}
           </span>
         </div>
       </div>
 
       {/* Heading */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/[0.145]">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Sparkles className="w-4 h-4 text-[#52a8ff]" />
-            <span className="font-mono text-xs text-[#52a8ff] uppercase tracking-widest">
+            <Sparkles className="w-4 h-4 text-[#2563eb]" />
+            <span className="font-mono text-xs text-[#2563eb] uppercase tracking-widest font-semibold">
               Explainable Match Results
             </span>
           </div>
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
             Top Ranked Candidates
           </h1>
-          <p className="font-mono text-xs text-[#999999] mt-1">
+          <p className="font-mono text-xs text-slate-500 mt-1">
             Deterministic scoring based on Semantic Domain Similarity, Concept Graph Coverage, Free Slot Overlap, and Role Fit.
           </p>
         </div>
 
         <Link
           href="/requests"
-          className="btn-square px-4 py-2 text-xs text-[#121212] self-start sm:self-auto"
+          className="btn-square px-4 py-2 text-xs text-white bg-slate-900 hover:bg-slate-800 self-start sm:self-auto"
         >
           <span>Post Another Request</span>
         </Link>
@@ -93,10 +93,10 @@ function MatchResultsContent() {
       {loading && (
         <div className="space-y-6">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="card-dark p-8 animate-pulse space-y-4">
-              <div className="h-6 bg-white/[0.1] w-1/3" />
-              <div className="h-4 bg-white/[0.05] w-2/3" />
-              <div className="h-16 bg-white/[0.03] w-full" />
+            <div key={i} className="card-dark bg-white border border-slate-200 p-8 animate-pulse space-y-4">
+              <div className="h-6 bg-slate-200 w-1/3" />
+              <div className="h-4 bg-slate-100 w-2/3" />
+              <div className="h-16 bg-slate-50 w-full" />
             </div>
           ))}
         </div>
@@ -113,18 +113,18 @@ function MatchResultsContent() {
 
       {/* Empty State */}
       {!loading && (!data || data.matches.length === 0) && (
-        <div className="card-dark p-12 text-center space-y-4">
-          <AlertCircle className="w-8 h-8 text-[#999999] mx-auto" />
-          <h3 className="text-lg font-medium text-white">
+        <div className="card-dark bg-white border border-slate-200 p-12 text-center space-y-4 shadow-sm">
+          <AlertCircle className="w-8 h-8 text-slate-400 mx-auto" />
+          <h3 className="text-lg font-semibold text-slate-900">
             No matching profiles found
           </h3>
-          <p className="font-mono text-xs text-[#999999] max-w-md mx-auto">
+          <p className="font-mono text-xs text-slate-500 max-w-md mx-auto">
             Try adjusting your search criteria or selecting broader timeslots to discover suitable candidates.
           </p>
           <div className="pt-2">
             <Link
               href="/requests"
-              className="btn-square px-5 py-2 text-xs text-[#121212]"
+              className="btn-square px-5 py-2 text-xs text-white bg-slate-900 hover:bg-slate-800"
             >
               <span>Edit Request</span>
             </Link>
@@ -137,10 +137,10 @@ function MatchResultsContent() {
 
 export default function MatchResultsPage() {
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
       <Navbar />
       <Suspense fallback={
-        <div className="max-w-[1200px] mx-auto px-6 py-12 text-center font-mono text-xs text-[#999999]">
+        <div className="max-w-[1200px] mx-auto px-6 py-12 text-center font-mono text-xs text-slate-500">
           Loading match results...
         </div>
       }>

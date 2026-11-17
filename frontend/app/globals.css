@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card-bg: #0a0a0a;
-  --card-ring: rgba(255, 255, 255, 0.145);
-  --accent-blue: #52a8ff;
-  --success-green: #62c073;
-  --muted-text: #999999;
-  --chip-bg: #1f1f1f;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --card-ring: #e2e8f0;
+  --accent-blue: #2563eb;
+  --success-green: #16a34a;
+  --muted-text: #64748b;
+  --chip-bg: #f1f5f9;
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #f8fafc;
+  color: #0f172a;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -24,8 +24,8 @@ body {
 /* Zero-radius brutalist buttons */
 .btn-square {
   border-radius: 0px !important;
-  background-color: #ffffff;
-  color: #121212;
+  background-color: #0f172a;
+  color: #ffffff;
   font-family: var(--font-inter), sans-serif;
   font-weight: 500;
   display: inline-flex;
@@ -36,7 +36,8 @@ body {
 }
 
 .btn-square:hover {
-  background-color: #ededed;
+  background-color: #1e293b;
+  color: #ffffff;
   opacity: 0.95;
 }
 
@@ -44,13 +45,14 @@ body {
 .v-chip {
   display: inline-flex;
   align-items: center;
-  background-color: #1f1f1f;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
   border-radius: 100px !important;
   padding: 4px 10px;
   gap: 6px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
-  color: #999999;
+  color: #475569;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
@@ -63,20 +65,22 @@ body {
   flex-shrink: 0;
 }
 
-/* Card layout */
+/* Card layout (Crisp light aesthetic) */
 .card-dark {
-  background-color: #0a0a0a;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.145);
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px #e2e8f0;
   border-radius: 0px;
+  color: #0f172a;
 }
 
 /* Fluid Headline */
 .headline-fluid {
   font-family: var(--font-inter), sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(32px, 5.5vw, 60px);
   line-height: 1.05;
   letter-spacing: -2px;
+  color: #0f172a;
 }
 
 @media (min-width: 1024px) {
@@ -87,9 +91,9 @@ body {
 
 /* Scrim overlay */
 .hero-scrim {
-  background: linear-gradient(to top, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0) 93.785%);
+  background: linear-gradient(to top, rgba(248,250,252,0.85) 0%, rgba(248,250,252,0) 93.785%);
 }
 
 .hero-bottom-fade {
-  background: linear-gradient(to top, #000000 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, #f8fafc 0%, rgba(248,250,252,0.85) 45%, rgba(248,250,252,0) 100%);
 }

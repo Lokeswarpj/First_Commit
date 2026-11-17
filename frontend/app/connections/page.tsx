@@ -184,26 +184,26 @@ export default function ConnectionsPage() {
       : incomingList;
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
       <Navbar />
 
       <main className="max-w-[1200px] mx-auto px-6 py-12 space-y-8">
         <div>
-          <p className="font-mono text-xs text-[#52a8ff] uppercase tracking-widest mb-1">
+          <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
             Privacy-Preserving Contact Exchange
           </p>
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
             Connection Requests
           </h1>
-          <p className="font-mono text-xs text-[#999999] mt-1">
+          <p className="font-mono text-xs text-slate-500 mt-1">
             Zero-Trust Privacy: Contact information remains cryptographically shielded until both students accept.
           </p>
         </div>
 
         {/* Recently Sent Notification Banner */}
         {recentSentAlert && (
-          <div className="p-4 bg-[#52a8ff]/10 border border-[#52a8ff]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs">
-            <div className="flex items-center gap-2.5 text-[#52a8ff]">
+          <div className="p-4 bg-blue-50 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs">
+            <div className="flex items-center gap-2.5 text-[#2563eb]">
               <Sparkles className="w-4 h-4 shrink-0" />
               <span>
                 Latest request sent to <strong>{recentSentAlert.toName}</strong> &bull; Status: PENDING
@@ -216,7 +216,7 @@ export default function ConnectionsPage() {
                   localStorage.removeItem("campuslink_latest_sent_connection");
                 } catch (e) {}
               }}
-              className="text-[#999999] hover:text-white underline text-[11px] self-start sm:self-auto"
+              className="text-slate-500 hover:text-slate-800 underline text-[11px] self-start sm:self-auto"
             >
               Dismiss
             </button>
@@ -224,13 +224,13 @@ export default function ConnectionsPage() {
         )}
 
         {/* Tab Selector */}
-        <div className="flex border-b border-white/[0.145] font-mono text-xs overflow-x-auto">
+        <div className="flex border-b border-slate-200 font-mono text-xs overflow-x-auto">
           <button
             onClick={() => setActiveTab("all")}
             className={`pb-3 px-5 flex items-center gap-2 border-b-2 whitespace-nowrap transition-colors ${
               activeTab === "all"
-                ? "border-[#52a8ff] text-white font-semibold"
-                : "border-transparent text-[#999999] hover:text-white"
+                ? "border-[#2563eb] text-[#2563eb] font-semibold"
+                : "border-transparent text-slate-500 hover:text-slate-900"
             }`}
           >
             <span>All Requests ({connections.length})</span>
@@ -239,8 +239,8 @@ export default function ConnectionsPage() {
             onClick={() => setActiveTab("outgoing")}
             className={`pb-3 px-5 flex items-center gap-2 border-b-2 whitespace-nowrap transition-colors ${
               activeTab === "outgoing"
-                ? "border-[#52a8ff] text-white font-semibold"
-                : "border-transparent text-[#999999] hover:text-white"
+                ? "border-[#2563eb] text-[#2563eb] font-semibold"
+                : "border-transparent text-slate-500 hover:text-slate-900"
             }`}
           >
             <Send className="w-3.5 h-3.5" />
@@ -250,8 +250,8 @@ export default function ConnectionsPage() {
             onClick={() => setActiveTab("incoming")}
             className={`pb-3 px-5 flex items-center gap-2 border-b-2 whitespace-nowrap transition-colors ${
               activeTab === "incoming"
-                ? "border-[#52a8ff] text-white font-semibold"
-                : "border-transparent text-[#999999] hover:text-white"
+                ? "border-[#2563eb] text-[#2563eb] font-semibold"
+                : "border-transparent text-slate-500 hover:text-slate-900"
             }`}
           >
             <Inbox className="w-3.5 h-3.5" />
@@ -262,7 +262,7 @@ export default function ConnectionsPage() {
         {/* CONNECTION LIST */}
         <div className="space-y-4">
           {displayList.length === 0 ? (
-            <div className="card-dark p-12 text-center font-mono text-xs text-[#999999]">
+            <div className="card-dark bg-white border border-slate-200 p-12 text-center font-mono text-xs text-slate-500">
               No connection requests found in this view.
             </div>
           ) : (
@@ -274,26 +274,26 @@ export default function ConnectionsPage() {
               return (
                 <div
                   key={conn.id}
-                  className="card-dark p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                  className="card-dark bg-white border border-slate-200 p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm"
                 >
                   <div className="space-y-3 max-w-2xl">
                     {/* Header: Direction, Peer Name, Status */}
                     <div className="flex flex-wrap items-center gap-3">
                       <span
-                        className={`font-mono text-[11px] px-2 py-0.5 border ${
+                        className={`font-mono text-[11px] px-2 py-0.5 border font-medium ${
                           outgoing
-                            ? "bg-[#52a8ff]/10 text-[#52a8ff] border-[#52a8ff]/30"
-                            : "bg-[#a855f7]/10 text-[#c084fc] border-[#a855f7]/30"
+                            ? "bg-blue-50 text-[#2563eb] border-blue-200"
+                            : "bg-purple-50 text-purple-700 border-purple-200"
                         }`}
                       >
                         {outgoing ? "OUTGOING SENT" : "INCOMING RECEIVED"}
                       </span>
 
-                      <span className="font-medium text-lg text-white">
+                      <span className="font-semibold text-lg text-slate-900">
                         {outgoing ? `To: ${conn.toName}` : `From: ${conn.fromName}`}
                       </span>
 
-                      <span className="font-mono text-xs text-[#999999]">
+                      <span className="font-mono text-xs text-slate-500">
                         (Year {outgoing ? conn.toYear : conn.fromYear})
                       </span>
 
@@ -304,30 +304,30 @@ export default function ConnectionsPage() {
                     </div>
 
                     {/* Topic / Explanation */}
-                    <p className="font-mono text-xs text-white leading-relaxed">
+                    <p className="font-mono text-xs text-slate-700 leading-relaxed">
                       &ldquo;{conn.topic}&rdquo;
                     </p>
 
                     {/* Privacy & Contact Reveal Area */}
                     {isAccepted ? (
-                      <div className="p-3 bg-[#62c073]/10 border border-[#62c073]/30 flex items-center gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-[#62c073] shrink-0" />
+                      <div className="p-3 bg-emerald-50 border border-emerald-300 flex items-center gap-3">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                         <div className="font-mono text-xs">
-                          <span className="text-[#62c073] font-semibold">
+                          <span className="text-emerald-700 font-semibold">
                             CONTACT UNLOCKED:{" "}
                           </span>
-                          <span className="text-white select-all">
+                          <span className="text-slate-900 font-medium select-all">
                             {outgoing ? conn.toEmail : conn.fromEmail}
                           </span>
                         </div>
                       </div>
                     ) : isDeclined ? (
-                      <p className="font-mono text-xs text-[#999999]">
+                      <p className="font-mono text-xs text-slate-500">
                         Connection request declined.
                       </p>
                     ) : (
-                      <div className="flex items-center gap-2 font-mono text-xs text-[#999999]">
-                        <Lock className="w-3.5 h-3.5 text-[#999999]" />
+                      <div className="flex items-center gap-2 font-mono text-xs text-slate-500">
+                        <Lock className="w-3.5 h-3.5 text-slate-400" />
                         <span>
                           Contact: &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;@college.edu{" "}
                           {outgoing
@@ -339,7 +339,7 @@ export default function ConnectionsPage() {
                   </div>
 
                   {/* Right Column / Actions */}
-                  <div className="font-mono text-xs text-[#999999] shrink-0 flex flex-col items-start md:items-end gap-3">
+                  <div className="font-mono text-xs text-slate-500 shrink-0 flex flex-col items-start md:items-end gap-3">
                     <span>Sent {conn.createdAt}</span>
 
                     {/* Incoming Actions: Accept / Decline */}
@@ -347,14 +347,14 @@ export default function ConnectionsPage() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleRespond(conn.id, "accepted")}
-                          className="btn-square px-3 py-1.5 text-xs bg-[#62c073] text-black hover:bg-[#52a8ff]"
+                          className="btn-square px-3 py-1.5 text-xs bg-emerald-600 text-white hover:bg-emerald-700"
                         >
-                          <Check className="w-3.5 h-3.5 text-black" />
+                          <Check className="w-3.5 h-3.5 text-white" />
                           <span>Accept &amp; Share</span>
                         </button>
                         <button
                           onClick={() => handleRespond(conn.id, "declined")}
-                          className="px-3 py-1.5 font-mono text-xs text-[#999999] hover:text-white border border-white/[0.145] hover:bg-white/5"
+                          className="px-3 py-1.5 font-mono text-xs text-slate-600 hover:text-slate-900 border border-slate-300 hover:bg-slate-100"
                         >
                           Decline
                         </button>
@@ -365,7 +365,7 @@ export default function ConnectionsPage() {
                     {outgoing && !isAccepted && !isDeclined && (
                       <button
                         onClick={() => handleRespond(conn.id, "accepted")}
-                        className="px-3 py-1.5 text-[11px] font-mono border border-white/[0.15] text-[#52a8ff] hover:bg-white/[0.05] transition-colors"
+                        className="px-3 py-1.5 text-[11px] font-mono border border-blue-200 bg-blue-50 text-[#2563eb] hover:bg-blue-100 transition-colors font-medium"
                         title="Simulate recipient accepting this request to demonstrate zero-trust contact reveal"
                       >
                         Demo: Simulate Accept &rarr;

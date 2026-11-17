@@ -155,29 +155,29 @@ export default function RequestsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
       <Navbar />
 
       <main className="max-w-[1200px] mx-auto px-6 py-12 space-y-12">
         {/* Header */}
         <div>
-          <p className="font-mono text-xs text-[#52a8ff] uppercase tracking-widest mb-1">
+          <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
             Intent-Driven Matchmaking
           </p>
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
             Post a Campus Request
           </h1>
-          <p className="font-mono text-xs text-[#999999] mt-1">
+          <p className="font-mono text-xs text-slate-500 mt-1">
             Express what you need in plain English. The AI engine will parse concepts, check availability, and rank verified peers.
           </p>
         </div>
 
         {/* Post Request Card */}
-        <div className="card-dark p-8 space-y-6">
+        <div className="card-dark bg-white border border-slate-200 p-8 space-y-6 shadow-sm">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Kind Selector */}
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-semibold">
                 Request Category
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -193,17 +193,17 @@ export default function RequestsPage() {
                     onClick={() => handleCategorySelect(k.id as any)}
                     className={`p-3.5 text-left border font-mono transition-colors ${
                       kind === k.id
-                        ? "bg-[#161616] border-[#52a8ff] text-white"
-                        : "bg-[#0d0d0d] border-white/[0.1] text-[#888888] hover:text-white"
+                        ? "bg-blue-50/80 border-[#2563eb] text-slate-900 shadow-sm"
+                        : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-semibold">{k.label}</span>
                       {kind === k.id && (
-                        <span className="w-2 h-2 rounded-full bg-[#52a8ff]" />
+                        <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
                       )}
                     </div>
-                    <p className="text-[11px] text-[#999999] mt-1">{k.desc}</p>
+                    <p className="text-[11px] text-slate-500 mt-1">{k.desc}</p>
                   </button>
                 ))}
               </div>
@@ -212,10 +212,10 @@ export default function RequestsPage() {
             {/* Plain Language Prompt Textarea */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="font-mono text-xs text-[#999999] uppercase tracking-wider">
+                <label className="font-mono text-xs text-slate-500 uppercase tracking-wider font-semibold">
                   Request Description (Plain English)
                 </label>
-                <span className="font-mono text-[10px] text-[#52a8ff]">
+                <span className="font-mono text-[10px] text-[#2563eb] font-medium">
                   Natural language concept enrichment enabled
                 </span>
               </div>
@@ -224,17 +224,17 @@ export default function RequestsPage() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={PLACEHOLDERS_BY_KIND[kind]}
-                className="w-full bg-[#121212] border border-white/[0.145] p-4 font-mono text-xs text-white placeholder-[#666666] focus:outline-none focus:border-[#52a8ff] leading-relaxed"
+                className="w-full bg-white border border-slate-300 p-4 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb] leading-relaxed"
               />
             </div>
 
             {/* Dynamic Quick Prefill Samples by Category */}
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[11px] text-[#999999]">
+                <span className="font-mono text-[11px] text-slate-500 font-medium">
                   Quick Test Samples ({kind.toUpperCase()}):
                 </span>
-                <span className="font-mono text-[10px] text-[#52a8ff]">
+                <span className="font-mono text-[10px] text-[#2563eb]">
                   Click any sample to test
                 </span>
               </div>
@@ -246,8 +246,8 @@ export default function RequestsPage() {
                     onClick={() => setText(sample)}
                     className={`px-3 py-2 border text-left font-mono text-[11px] transition-colors ${
                       text === sample
-                        ? "bg-[#161616] border-[#52a8ff] text-white"
-                        : "bg-[#121212] border-white/[0.1] hover:border-white/30 text-[#cccccc]"
+                        ? "bg-blue-50 border-[#2563eb] text-[#2563eb] font-medium"
+                        : "bg-slate-50/70 border-slate-200 hover:border-slate-300 text-slate-700"
                     }`}
                   >
                     &ldquo;{sample}&rdquo;
@@ -258,7 +258,7 @@ export default function RequestsPage() {
 
             {/* Slot Overlap Selection */}
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-semibold">
                 My Free Timeslots for this Request
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -271,8 +271,8 @@ export default function RequestsPage() {
                       onClick={() => handleSlotToggle(s.id)}
                       className={`p-2.5 border text-center font-mono text-xs transition-colors ${
                         active
-                          ? "bg-white text-black border-white font-semibold"
-                          : "bg-[#121212] text-[#888888] border-white/[0.145] hover:text-white"
+                          ? "bg-slate-900 text-white border-slate-900 font-semibold"
+                          : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:text-slate-900"
                       }`}
                     >
                       {s.label}
@@ -283,18 +283,18 @@ export default function RequestsPage() {
             </div>
 
             {/* Submit CTA */}
-            <div className="pt-2 flex items-center justify-between">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <button
                 type="submit"
                 disabled={loading || !text.trim()}
-                className="btn-square px-7 py-3 text-sm text-[#121212] disabled:opacity-50"
+                className="btn-square px-7 py-3 text-sm text-white bg-slate-900 hover:bg-slate-800 disabled:opacity-50"
               >
-                <Sparkles className="w-4 h-4 text-[#121212]" />
+                <Sparkles className="w-4 h-4 text-white" />
                 <span>{loading ? "Computing AI Embeddings & Scores..." : "Run AI Matcher"}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#121212]" />
+                <ArrowUpRight className="w-4 h-4 text-white" />
               </button>
 
-              <span className="font-mono text-xs text-[#999999]">
+              <span className="font-mono text-xs text-slate-500">
                 Returns top-3 ranked candidates with explainable score breakdown
               </span>
             </div>
@@ -304,10 +304,10 @@ export default function RequestsPage() {
         {/* Past Requests History */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-medium tracking-tight text-white">
+            <h2 className="text-xl font-semibold tracking-tight text-slate-900">
               My Past Requests
             </h2>
-            <span className="font-mono text-xs text-[#999999]">
+            <span className="font-mono text-xs text-slate-500">
               {pastRequests.length} recorded
             </span>
           </div>
@@ -316,7 +316,7 @@ export default function RequestsPage() {
             {pastRequests.map((req) => (
               <div
                 key={req.id}
-                className="card-dark p-5 flex flex-col justify-between space-y-4 hover:border-white/30 transition-colors"
+                className="card-dark bg-white border border-slate-200 p-5 flex flex-col justify-between space-y-4 hover:border-slate-300 transition-colors shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -324,26 +324,26 @@ export default function RequestsPage() {
                       status={req.kind === "mentor" ? "ACTIVE" : "PASS"}
                       label={req.kind.toUpperCase()}
                     />
-                    <span className="font-mono text-[11px] text-[#999999] flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
+                    <span className="font-mono text-[11px] text-slate-500 flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
                       {req.createdAt}
                     </span>
                   </div>
-                  <p className="font-mono text-xs text-white leading-relaxed line-clamp-2">
+                  <p className="font-mono text-xs text-slate-800 leading-relaxed line-clamp-2">
                     {req.text}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-white/[0.1]">
-                  <span className="font-mono text-[11px] text-[#999999]">
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                  <span className="font-mono text-[11px] text-slate-500">
                     {req.matchCount} Top Candidates Ranked
                   </span>
                   <Link
                     href={`/requests/${req.id}`}
-                    className="btn-square px-3 py-1.5 text-xs text-[#121212]"
+                    className="btn-square px-3 py-1.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
                   >
                     <span>View Matches</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#121212]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                   </Link>
                 </div>
               </div>

@@ -59,27 +59,27 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
       <Navbar />
 
       <main className="max-w-[1000px] mx-auto px-6 py-12 space-y-8">
         <div>
-          <p className="font-mono text-xs text-[#52a8ff] uppercase tracking-widest mb-1">
+          <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
             Student Identity &amp; Capabilities
           </p>
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
             My Campus Profile
           </h1>
-          <p className="font-mono text-xs text-[#999999] mt-1">
+          <p className="font-mono text-xs text-slate-500 mt-1">
             Used by the AI matcher to score domain alignment and role suitability
           </p>
         </div>
 
-        <div className="card-dark p-8 space-y-8">
+        <div className="card-dark bg-white border border-slate-200 p-8 space-y-8 shadow-sm">
           {/* Basic Info Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-white/[0.145]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-slate-200">
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
                 Full Name
               </label>
               <input
@@ -89,12 +89,12 @@ export default function ProfilePage() {
                   setProfile({ ...profile, name: e.target.value });
                   setSaved(false);
                 }}
-                className="w-full bg-[#121212] border border-white/[0.145] px-4 py-2 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                className="w-full bg-white border border-slate-300 px-4 py-2 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
               />
             </div>
 
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
                 Email Address
               </label>
               <input
@@ -104,15 +104,15 @@ export default function ProfilePage() {
                   setProfile({ ...profile, college_email: e.target.value });
                   setSaved(false);
                 }}
-                className="w-full bg-[#121212] border border-white/[0.145] px-4 py-2 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                className="w-full bg-white border border-slate-300 px-4 py-2 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
               />
             </div>
           </div>
 
           {/* Academic Year & Mentor Status */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-white/[0.145]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-slate-200">
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
                 Academic Year
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -130,8 +130,8 @@ export default function ProfilePage() {
                     }}
                     className={`py-2 text-xs font-mono border transition-colors ${
                       profile.year === yr
-                        ? "bg-white text-black border-white font-bold"
-                        : "bg-[#121212] text-[#999999] border-white/[0.145] hover:text-white"
+                        ? "bg-slate-900 text-white border-slate-900 font-bold"
+                        : "bg-white text-slate-700 border-slate-200 hover:border-slate-300"
                     }`}
                   >
                     Year {yr}
@@ -142,20 +142,20 @@ export default function ProfilePage() {
 
             {/* Mentor Toggle */}
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
                 Verified Mentor Role
               </label>
-              <div className="p-3 bg-[#121212] border border-white/[0.145] flex items-center justify-between">
+              <div className="p-3 bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs text-white">
+                    <span className="font-mono text-xs text-slate-900 font-medium">
                       I want to guide junior students
                     </span>
                     {profile.is_mentor && (
                       <StatusChip status="PASS" label="VERIFIED" />
                     )}
                   </div>
-                  <p className="font-mono text-[10px] text-[#999999] mt-0.5">
+                  <p className="font-mono text-[10px] text-slate-500 mt-0.5">
                     {profile.year >= 3
                       ? "Eligible for mentor matching requests"
                       : "Mentorship requires Year 3 or Year 4 seniority"}
@@ -170,27 +170,27 @@ export default function ProfilePage() {
                     setProfile({ ...profile, is_mentor: e.target.checked });
                     setSaved(false);
                   }}
-                  className="w-4 h-4 accent-[#52a8ff] cursor-pointer disabled:cursor-not-allowed"
+                  className="w-4 h-4 accent-[#2563eb] cursor-pointer disabled:cursor-not-allowed"
                 />
               </div>
             </div>
           </div>
 
           {/* Skills Tag Input */}
-          <div className="space-y-3 pb-6 border-b border-white/[0.145]">
-            <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider">
+          <div className="space-y-3 pb-6 border-b border-slate-200">
+            <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider font-medium">
               Skills &amp; Technologies
             </label>
             <div className="flex flex-wrap gap-2 items-center">
               {profile.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#161616] border border-white/[0.145] font-mono text-xs text-white"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-slate-200 font-mono text-xs text-slate-800"
                 >
                   <span>{skill}</span>
                   <button
                     onClick={() => handleRemoveSkill(skill)}
-                    className="text-[#999999] hover:text-white"
+                    className="text-slate-400 hover:text-slate-700"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -204,21 +204,21 @@ export default function ProfilePage() {
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 placeholder="e.g. react, pytorch, sql..."
-                className="flex-1 bg-[#121212] border border-white/[0.145] px-3 py-1.5 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                className="flex-1 bg-white border border-slate-300 px-3 py-1.5 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb]"
               />
               <button
                 type="submit"
-                className="btn-square px-3 py-1.5 text-xs text-[#121212]"
+                className="btn-square px-3 py-1.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
               >
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-3.5 h-3.5 text-white" />
                 <span>Add</span>
               </button>
             </form>
           </div>
 
           {/* Interests & Bio */}
-          <div className="space-y-2 pb-6 border-b border-white/[0.145]">
-            <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider">
+          <div className="space-y-2 pb-6 border-b border-slate-200">
+            <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider font-medium">
               Research Interests &amp; Project Passions
             </label>
             <textarea
@@ -229,13 +229,13 @@ export default function ProfilePage() {
                 setSaved(false);
               }}
               placeholder="e.g. hackathons, medical imaging, competitive programming, open source..."
-              className="w-full bg-[#121212] border border-white/[0.145] p-3 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+              className="w-full bg-white border border-slate-300 p-3 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb]"
             />
           </div>
 
           {/* Free Time Slot Checkboxes */}
           <div className="space-y-3">
-            <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider">
+            <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider font-medium">
               Weekly Free Availability Slots
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -247,8 +247,8 @@ export default function ProfilePage() {
                     onClick={() => handleSlotToggle(slot.id)}
                     className={`p-3 border cursor-pointer font-mono text-xs flex items-center justify-between transition-colors ${
                       checked
-                        ? "bg-[#161616] border-[#52a8ff] text-white"
-                        : "bg-[#0f0f0f] border-white/[0.1] text-[#888888] hover:text-white"
+                        ? "bg-blue-50/70 border-[#2563eb] text-slate-900 font-medium"
+                        : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
                     }`}
                   >
                     <span>{slot.label}</span>
@@ -256,7 +256,7 @@ export default function ProfilePage() {
                       type="checkbox"
                       checked={checked}
                       readOnly
-                      className="w-4 h-4 accent-[#52a8ff]"
+                      className="w-4 h-4 accent-[#2563eb]"
                     />
                   </div>
                 );
@@ -268,13 +268,13 @@ export default function ProfilePage() {
           <div className="pt-4 flex items-center justify-between">
             <button
               onClick={handleSave}
-              className="btn-square px-6 py-2.5 text-xs text-[#121212]"
+              className="btn-square px-6 py-2.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
             >
               <span>Save Profile Changes</span>
             </button>
 
             {saved && (
-              <div className="flex items-center gap-2 font-mono text-xs text-[#62c073]">
+              <div className="flex items-center gap-2 font-mono text-xs text-emerald-600 font-medium">
                 <Check className="w-4 h-4" />
                 <span>Profile updated &amp; synced successfully</span>
               </div>

@@ -42,7 +42,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white flex flex-col justify-center items-center px-6 py-12">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col justify-center items-center px-6 py-12">
       <div className="w-full max-w-[480px] space-y-8">
         {/* Brand Header */}
         <div className="text-center space-y-2">
@@ -54,28 +54,28 @@ export default function LoginPage() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect x="2" y="2" width="8" height="8" fill="#ffffff" />
-              <rect x="14" y="2" width="8" height="8" fill="#52a8ff" />
-              <rect x="2" y="14" width="8" height="8" fill="rgba(255,255,255,0.4)" />
-              <rect x="14" y="14" width="8" height="8" fill="#ffffff" />
+              <rect x="2" y="2" width="8" height="8" fill="#0f172a" />
+              <rect x="14" y="2" width="8" height="8" fill="#2563eb" />
+              <rect x="2" y="14" width="8" height="8" fill="#cbd5e1" />
+              <rect x="14" y="14" width="8" height="8" fill="#0f172a" />
             </svg>
-            <span className="font-medium text-2xl text-white tracking-[-0.5px]">
+            <span className="font-semibold text-2xl text-slate-900 tracking-[-0.5px]">
               CampusLink
             </span>
           </Link>
-          <h1 className="text-2xl font-medium tracking-tight text-white">
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
             Access Campus Network
           </h1>
-          <p className="font-mono text-xs text-[#999999]">
+          <p className="font-mono text-xs text-slate-500">
             Sign in with any email address or use an instant demo account
           </p>
         </div>
 
         {/* Login Card */}
-        <div className="card-dark p-8 space-y-6">
+        <div className="card-dark bg-white border border-slate-200 shadow-sm p-8 space-y-6">
           <form onSubmit={handleCustomLogin} className="space-y-4">
             <div>
-              <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
                 Email Address
               </label>
               <div className="relative">
@@ -84,21 +84,21 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. name@gmail.com, student@college.edu..."
-                  className="w-full bg-[#121212] border border-white/[0.145] px-4 py-2.5 font-mono text-xs text-white placeholder-[#666666] focus:outline-none focus:border-[#52a8ff]"
+                  className="w-full bg-white border border-slate-300 px-4 py-2.5 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
                 />
-                <Mail className="absolute right-3 top-3 w-4 h-4 text-[#666666]" />
+                <Mail className="absolute right-3 top-3 w-4 h-4 text-slate-400" />
               </div>
             </div>
 
             {error && (
-              <p className="font-mono text-xs text-red-400 leading-relaxed">
+              <p className="font-mono text-xs text-red-500 leading-relaxed">
                 {error}
               </p>
             )}
 
             <button
               type="submit"
-              className="btn-square w-full py-2.5 text-xs text-[#121212]"
+              className="btn-square w-full py-2.5 text-xs text-white bg-slate-900 hover:bg-slate-800 cursor-pointer font-medium"
             >
               <span>Instant Login &rarr;</span>
             </button>
@@ -106,8 +106,8 @@ export default function LoginPage() {
 
           {/* Divider */}
           <div className="relative flex items-center justify-center py-2">
-            <div className="border-t border-white/[0.145] w-full" />
-            <span className="bg-[#0a0a0a] px-3 font-mono text-[10px] text-[#999999] uppercase tracking-widest absolute">
+            <div className="border-t border-slate-200 w-full" />
+            <span className="bg-white px-3 font-mono text-[10px] text-slate-500 uppercase tracking-widest absolute">
               OR INSTANT DEMO LOGIN
             </span>
           </div>
@@ -117,46 +117,46 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => handleDemoLogin(DEMO_FRESHER)}
-              className="w-full p-3.5 bg-[#121212] border border-white/[0.145] hover:border-[#62c073] text-left transition-colors flex items-center justify-between group"
+              className="w-full p-3.5 bg-slate-50 border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/30 text-left transition-colors flex items-center justify-between group"
             >
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#62c073]" />
-                  <span className="font-medium text-sm text-white group-hover:text-[#62c073]">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                  <span className="font-semibold text-sm text-slate-900 group-hover:text-emerald-700">
                     {DEMO_FRESHER.name}
                   </span>
                 </div>
-                <p className="font-mono text-[11px] text-[#999999] mt-0.5">
+                <p className="font-mono text-[11px] text-slate-500 mt-0.5">
                   Year 1 Fresher &bull; Needs ML &amp; Web Dev Guidance
                 </p>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-[#999999] group-hover:text-white" />
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900" />
             </button>
 
             <button
               type="button"
               onClick={() => handleDemoLogin(DEMO_MENTOR)}
-              className="w-full p-3.5 bg-[#121212] border border-white/[0.145] hover:border-[#52a8ff] text-left transition-colors flex items-center justify-between group"
+              className="w-full p-3.5 bg-slate-50 border border-slate-200 hover:border-[#2563eb] hover:bg-blue-50/30 text-left transition-colors flex items-center justify-between group"
             >
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#52a8ff]" />
-                  <span className="font-medium text-sm text-white group-hover:text-[#52a8ff]">
+                  <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
+                  <span className="font-semibold text-sm text-slate-900 group-hover:text-[#2563eb]">
                     {DEMO_MENTOR.name}
                   </span>
                 </div>
-                <p className="font-mono text-[11px] text-[#999999] mt-0.5">
+                <p className="font-mono text-[11px] text-slate-500 mt-0.5">
                   Year 3 Senior Mentor &bull; Kaggle Expert &amp; ML Guide
                 </p>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-[#999999] group-hover:text-white" />
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900" />
             </button>
           </div>
         </div>
 
         {/* Security Footer Notice */}
-        <div className="flex items-center justify-center gap-2 font-mono text-[11px] text-[#999999]">
-          <ShieldCheck className="w-4 h-4 text-[#62c073]" />
+        <div className="flex items-center justify-center gap-2 font-mono text-[11px] text-slate-500">
+          <ShieldCheck className="w-4 h-4 text-emerald-600" />
           <span>Domain Verification &bull; Row Level Security Enabled</span>
         </div>
       </div>

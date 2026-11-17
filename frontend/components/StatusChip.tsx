@@ -10,12 +10,14 @@ interface StatusChipProps {
 export const StatusChip: React.FC<StatusChipProps> = ({ status, label }) => {
   const dotColor =
     status === "PASS"
-      ? "#62c073"
+      ? "#16a34a"
       : status === "WARN"
-      ? "#999999"
+      ? "#d97706"
       : status === "ACTIVE"
-      ? "#52a8ff"
-      : "#ededed";
+      ? "#2563eb"
+      : status === "FAIL"
+      ? "#dc2626"
+      : "#64748b";
 
   const displayLabel = label || status;
 

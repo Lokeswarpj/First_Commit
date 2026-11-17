@@ -72,19 +72,19 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
   };
 
   return (
-    <div className="card-dark p-6 sm:p-8 flex flex-col justify-between space-y-6 relative group overflow-hidden">
+    <div className="card-dark p-6 sm:p-8 flex flex-col justify-between space-y-6 relative group overflow-hidden bg-white border border-slate-200 shadow-sm">
       {/* Top Bar: Rank, Name, Year, Score */}
       <div>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.145]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs px-2.5 py-1 bg-white/[0.06] text-[#52a8ff] border border-white/[0.1]">
+            <span className="font-mono text-xs px-2.5 py-1 bg-blue-50 text-[#2563eb] border border-blue-200 font-semibold">
               RANK #{rank}
             </span>
             <div>
-              <h3 className="text-xl font-medium text-white tracking-[-0.5px]">
+              <h3 className="text-xl font-semibold text-slate-900 tracking-[-0.5px]">
                 {match.name}
               </h3>
-              <p className="font-mono text-xs text-[#999999] mt-0.5">
+              <p className="font-mono text-xs text-slate-500 mt-0.5">
                 Academic Year {match.year} &bull; Candidate ID: {match.candidate_id}
               </p>
             </div>
@@ -93,10 +93,10 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
           {/* High-Contrast Match Score Pill */}
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <span className="font-mono text-[28px] sm:text-[32px] font-bold text-white tracking-tight">
+              <span className="font-mono text-[28px] sm:text-[32px] font-bold text-slate-900 tracking-tight">
                 {match.score}
               </span>
-              <span className="font-mono text-xs text-[#999999] ml-1">/100</span>
+              <span className="font-mono text-xs text-slate-500 ml-1">/100</span>
             </div>
             <StatusChip
               status={match.score >= 80 ? "PASS" : match.score >= 50 ? "ACTIVE" : "WARN"}
@@ -106,26 +106,26 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
         </div>
 
         {/* Explainability "Why" Callout */}
-        <div className="mt-4 p-3.5 bg-[#121212] border-l-2 border-[#52a8ff] flex items-start gap-3">
-          <span className="font-mono text-xs font-semibold text-[#52a8ff] uppercase tracking-wider shrink-0 mt-0.5">
+        <div className="mt-4 p-3.5 bg-blue-50/70 border-l-2 border-[#2563eb] flex items-start gap-3">
+          <span className="font-mono text-xs font-semibold text-[#2563eb] uppercase tracking-wider shrink-0 mt-0.5">
             WHY THIS MATCH:
           </span>
-          <span className="font-mono text-xs text-white leading-relaxed">
+          <span className="font-mono text-xs text-slate-800 leading-relaxed font-medium">
             {match.reason}
           </span>
         </div>
 
         {/* Four Score Breakdown Bars (The Proof that AI Matching Works) */}
         <div className="mt-6 space-y-3 font-mono text-xs">
-          <p className="text-[11px] text-[#999999] uppercase tracking-wider">
+          <p className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
             Algorithmic Score Breakdown
           </p>
 
           {/* 1. Semantic Similarity (Weight: 45%) */}
           <div className="space-y-1">
-            <div className="flex justify-between text-[#999999]">
+            <div className="flex justify-between text-slate-600">
               <span>Semantic Domain Alignment (45%)</span>
-              <span className="text-white">{Math.round(match.parts.semantic * 100)}%</span>
+              <span className="text-slate-900 font-semibold">{Math.round(match.parts.semantic * 100)}%</span>
             </div>
             <TimelineProgressBar
               offsetPercent={0}
@@ -136,9 +136,9 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
 
           {/* 2. Concept Coverage (Weight: 30%) */}
           <div className="space-y-1">
-            <div className="flex justify-between text-[#999999]">
+            <div className="flex justify-between text-slate-600">
               <span>Concept Graph Coverage (30%)</span>
-              <span className="text-white">{Math.round(match.parts.coverage * 100)}%</span>
+              <span className="text-slate-900 font-semibold">{Math.round(match.parts.coverage * 100)}%</span>
             </div>
             <TimelineProgressBar
               offsetPercent={0}
@@ -149,9 +149,9 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
 
           {/* 3. Free Slot Availability (Weight: 15%) */}
           <div className="space-y-1">
-            <div className="flex justify-between text-[#999999]">
+            <div className="flex justify-between text-slate-600">
               <span>Mutual Time Availability (15%)</span>
-              <span className="text-white">{Math.round(match.parts.availability * 100)}%</span>
+              <span className="text-slate-900 font-semibold">{Math.round(match.parts.availability * 100)}%</span>
             </div>
             <TimelineProgressBar
               offsetPercent={0}
@@ -162,9 +162,9 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
 
           {/* 4. Fit / Seniority (Weight: 10%) */}
           <div className="space-y-1">
-            <div className="flex justify-between text-[#999999]">
+            <div className="flex justify-between text-slate-600">
               <span>Role / Seniority Fit (10%)</span>
-              <span className="text-white">{Math.round(match.parts.fit * 100)}%</span>
+              <span className="text-slate-900 font-semibold">{Math.round(match.parts.fit * 100)}%</span>
             </div>
             <TimelineProgressBar
               offsetPercent={0}
@@ -176,11 +176,11 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
 
         {/* Skills Tag Pills */}
         <div className="mt-6 flex flex-wrap items-center gap-1.5 font-mono text-xs">
-          <span className="text-[#999999] mr-1">Skills:</span>
+          <span className="text-slate-500 mr-1">Skills:</span>
           {match.skills.map((skill) => (
             <span
               key={skill}
-              className="px-2 py-0.5 bg-white/[0.06] border border-white/[0.1] text-white"
+              className="px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-700"
             >
               {skill}
             </span>
@@ -189,38 +189,38 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
       </div>
 
       {/* Action Bottom Row: Connect CTA & Feedback */}
-      <div className="pt-4 border-t border-white/[0.145] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Connect Button */}
         <div>
           {connectStatus === "connected" ? (
             <Link
               href="/connections?tab=outgoing"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#62c073]/20 border border-[#62c073]/40 text-[#62c073] font-mono text-xs hover:bg-[#62c073]/30 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-300 text-emerald-700 font-mono text-xs hover:bg-emerald-100 transition-colors font-medium"
             >
-              <Check className="w-4 h-4" />
+              <Check className="w-4 h-4 text-emerald-700" />
               <span>REQUEST SENT &bull; VIEW IN CONNECTIONS &rarr;</span>
             </Link>
           ) : (
             <button
               onClick={handleConnect}
               disabled={connectStatus === "sending"}
-              className="btn-square px-5 py-2.5 text-xs text-[#121212]"
+              className="btn-square px-5 py-2.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
             >
               <span>{connectStatus === "sending" ? "Sending..." : "Connect Request"}</span>
-              <ArrowUpRight className="w-4 h-4 text-[#121212]" />
+              <ArrowUpRight className="w-4 h-4 text-white" />
             </button>
           )}
         </div>
 
         {/* Good Match / Not Useful Feedback Buttons */}
-        <div className="flex items-center gap-2 font-mono text-xs text-[#999999]">
+        <div className="flex items-center gap-2 font-mono text-xs text-slate-500">
           <span>Judge AI Match:</span>
           <button
             onClick={() => handleFeedback("good")}
             className={`p-1.5 border transition-colors ${
               feedback === "good"
-                ? "bg-[#62c073]/20 border-[#62c073] text-[#62c073]"
-                : "border-white/[0.145] hover:bg-white/10 text-white"
+                ? "bg-emerald-50 border-emerald-500 text-emerald-700"
+                : "border-slate-200 hover:bg-slate-100 text-slate-600"
             }`}
             title="Good match"
           >
@@ -230,8 +230,8 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
             onClick={() => handleFeedback("bad")}
             className={`p-1.5 border transition-colors ${
               feedback === "bad"
-                ? "bg-red-500/20 border-red-500 text-red-400"
-                : "border-white/[0.145] hover:bg-white/10 text-white"
+                ? "bg-red-50 border-red-500 text-red-600"
+                : "border-slate-200 hover:bg-slate-100 text-slate-600"
             }`}
             title="Not useful"
           >

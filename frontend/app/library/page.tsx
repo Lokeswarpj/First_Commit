@@ -157,29 +157,29 @@ export default function LibraryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
       <Navbar />
 
       <main className="max-w-[1200px] mx-auto px-6 py-12 space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <p className="font-mono text-xs text-[#52a8ff] uppercase tracking-widest mb-1">
+            <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
               Verified Academic Knowledge Bank
             </p>
-            <h1 className="text-3xl font-medium tracking-tight text-white">
+            <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
               Notes &amp; Study Library
             </h1>
-            <p className="font-mono text-xs text-[#999999] mt-1">
+            <p className="font-mono text-xs text-slate-500 mt-1">
               Curated lecture notes, cheat sheets, and placement problem sets verified by senior mentors.
             </p>
           </div>
 
           <button
             onClick={() => setUploadModalOpen(true)}
-            className="btn-square px-4 py-2.5 text-xs text-[#121212] self-start sm:self-auto"
+            className="btn-square px-4 py-2.5 text-xs text-white bg-slate-900 hover:bg-slate-800 self-start sm:self-auto"
           >
-            <Upload className="w-4 h-4 text-[#121212]" />
+            <Upload className="w-4 h-4 text-white" />
             <span>Upload Resource</span>
           </button>
         </div>
@@ -192,9 +192,9 @@ export default function LibraryPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search notes by subject, keyword, tag (e.g. 'dbms', 'pytorch', 'dsa')..."
-              className="w-full bg-[#121212] border border-white/[0.145] pl-11 pr-4 py-3 font-mono text-xs text-white placeholder-[#666666] focus:outline-none focus:border-[#52a8ff]"
+              className="w-full bg-white border border-slate-300 pl-11 pr-4 py-3 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] shadow-sm"
             />
-            <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#888888]" />
+            <Search className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
           </div>
 
           {/* Subject Pills */}
@@ -205,8 +205,8 @@ export default function LibraryPage() {
                 onClick={() => setSelectedSubject(sub)}
                 className={`px-3 py-1 font-mono text-xs border transition-colors ${
                   selectedSubject === sub
-                    ? "bg-white text-black border-white font-semibold"
-                    : "bg-[#121212] text-[#999999] border-white/[0.1] hover:text-white"
+                    ? "bg-slate-900 text-white border-slate-900 font-semibold"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
                 }`}
               >
                 {sub}
@@ -220,11 +220,11 @@ export default function LibraryPage() {
           {filteredResources.map((res) => (
             <div
               key={res.id}
-              className="card-dark p-6 sm:p-7 flex flex-col justify-between space-y-5 hover:border-white/30 transition-colors"
+              className="card-dark bg-white border border-slate-200 p-6 sm:p-7 flex flex-col justify-between space-y-5 hover:border-slate-300 transition-colors shadow-sm"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] px-2 py-0.5 bg-[#161616] border border-white/[0.1] text-[#52a8ff]">
+                  <span className="font-mono text-[11px] px-2 py-0.5 bg-blue-50 border border-blue-200 text-[#2563eb] font-semibold">
                     {res.subject}
                   </span>
                   {res.verified && (
@@ -232,11 +232,11 @@ export default function LibraryPage() {
                   )}
                 </div>
 
-                <h3 className="text-lg font-medium text-white leading-snug tracking-[-0.3px]">
+                <h3 className="text-lg font-semibold text-slate-900 leading-snug tracking-[-0.3px]">
                   {res.title}
                 </h3>
 
-                <p className="font-mono text-xs text-[#999999]">
+                <p className="font-mono text-xs text-slate-500">
                   Uploaded by {res.author} &bull; {res.downloads} downloads
                 </p>
 
@@ -245,7 +245,7 @@ export default function LibraryPage() {
                   {res.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 bg-white/[0.04] text-[11px] font-mono text-[#aaaaaa]"
+                      className="px-2 py-0.5 bg-slate-100 text-[11px] font-mono text-slate-600"
                     >
                       #{tag}
                     </span>
@@ -253,15 +253,15 @@ export default function LibraryPage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.1] flex items-center justify-between">
-                <span className="font-mono text-xs text-[#999999]">PDF Document</span>
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="font-mono text-xs text-slate-500">PDF Document</span>
                 <a
                   href={res.fileUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-square px-3.5 py-1.5 text-xs text-[#121212]"
+                  className="btn-square px-3.5 py-1.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
                 >
-                  <Download className="w-3.5 h-3.5 text-[#121212]" />
+                  <Download className="w-3.5 h-3.5 text-white" />
                   <span>Download</span>
                 </a>
               </div>
@@ -270,7 +270,7 @@ export default function LibraryPage() {
         </div>
 
         {filteredResources.length === 0 && (
-          <div className="card-dark p-12 text-center font-mono text-xs text-[#999999]">
+          <div className="card-dark bg-white border border-slate-200 p-12 text-center font-mono text-xs text-slate-500 shadow-sm">
             No resources found matching &ldquo;{searchQuery}&rdquo;. Try another search term.
           </div>
         )}
@@ -278,27 +278,27 @@ export default function LibraryPage() {
 
       {/* Upload Modal */}
       {uploadModalOpen && (
-        <div className="fixed inset-0 bg-[#000000]/80 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-          <div className="card-dark max-w-lg w-full p-8 space-y-6 relative">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+          <div className="card-dark bg-white border border-slate-200 max-w-lg w-full p-8 space-y-6 relative shadow-xl">
             <button
               onClick={() => setUploadModalOpen(false)}
-              className="absolute top-6 right-6 text-[#999999] hover:text-white"
+              className="absolute top-6 right-6 text-slate-400 hover:text-slate-800"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div>
-              <h2 className="text-xl font-medium text-white">
+              <h2 className="text-xl font-semibold text-slate-900">
                 Contribute Course Notes
               </h2>
-              <p className="font-mono text-xs text-[#999999] mt-1">
+              <p className="font-mono text-xs text-slate-500 mt-1">
                 Share study materials with peers. Verified by student mentors.
               </p>
             </div>
 
             <form onSubmit={handleUploadSubmit} className="space-y-4">
               <div>
-                <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-1.5">
+                <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-1.5 font-medium">
                   Resource Title
                 </label>
                 <input
@@ -307,18 +307,18 @@ export default function LibraryPage() {
                   value={uploadTitle}
                   onChange={(e) => setUploadTitle(e.target.value)}
                   placeholder="e.g. Operating Systems Concurrency Notes"
-                  className="w-full bg-[#121212] border border-white/[0.145] p-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                  className="w-full bg-white border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb]"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-1.5">
+                <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-1.5 font-medium">
                   Subject Domain
                 </label>
                 <select
                   value={uploadSubject}
                   onChange={(e) => setUploadSubject(e.target.value)}
-                  className="w-full bg-[#121212] border border-white/[0.145] p-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                  className="w-full bg-white border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb]"
                 >
                   <option value="Computer Science">Computer Science</option>
                   <option value="Artificial Intelligence">Artificial Intelligence</option>
@@ -330,7 +330,7 @@ export default function LibraryPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-1.5">
+                <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-1.5 font-medium">
                   Tags (comma separated)
                 </label>
                 <input
@@ -338,22 +338,22 @@ export default function LibraryPage() {
                   value={uploadTags}
                   onChange={(e) => setUploadTags(e.target.value)}
                   placeholder="os, semaphores, deadlock, memory"
-                  className="w-full bg-[#121212] border border-white/[0.145] p-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
+                  className="w-full bg-white border border-slate-300 p-2.5 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb]"
                 />
               </div>
 
-              <div className="p-4 bg-[#121212] border border-dashed border-white/[0.2] text-center font-mono text-xs text-[#888888]">
+              <div className="p-4 bg-slate-50 border border-dashed border-slate-300 text-center font-mono text-xs text-slate-500">
                 <span>Click or drag and drop PDF file (Max 25MB)</span>
               </div>
 
               {uploadedSuccess ? (
-                <div className="p-3 bg-[#62c073]/20 border border-[#62c073] text-[#62c073] font-mono text-xs text-center">
+                <div className="p-3 bg-emerald-50 border border-emerald-500 text-emerald-700 font-mono text-xs text-center font-semibold">
                   Resource successfully uploaded to campus library!
                 </div>
               ) : (
                 <button
                   type="submit"
-                  className="btn-square w-full py-2.5 text-xs text-[#121212]"
+                  className="btn-square w-full py-2.5 text-xs text-white bg-slate-900 hover:bg-slate-800"
                 >
                   <span>Submit for Peer Verification</span>
                 </button>

@@ -12,13 +12,13 @@ export const TimelineProgressBar: React.FC<TimelineProgressBarProps> = ({
   isActive = false,
 }) => {
   return (
-    <div className="w-full h-1.5 bg-transparent relative overflow-hidden">
+    <div className="w-full h-1.5 bg-[#e2e8f0] relative overflow-hidden rounded-full">
       <div
-        className="absolute top-0 bottom-0 rounded-[2px] transition-all"
+        className="absolute top-0 bottom-0 rounded-full transition-all"
         style={{
           left: `${Math.min(100, Math.max(0, offsetPercent))}%`,
           width: `${Math.min(100 - offsetPercent, Math.max(2, durationPercent))}%`,
-          backgroundColor: isActive ? "#52a8ff" : "rgba(255, 255, 255, 0.18)",
+          backgroundColor: isActive ? "#2563eb" : "#94a3b8",
         }}
       />
     </div>
