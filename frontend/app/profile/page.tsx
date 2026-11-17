@@ -95,13 +95,16 @@ export default function ProfilePage() {
 
             <div>
               <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
-                College Email (Domain Authenticated)
+                Email Address
               </label>
               <input
-                type="text"
-                disabled
+                type="email"
                 value={profile.college_email}
-                className="w-full bg-[#161616] border border-white/[0.1] px-4 py-2 font-mono text-xs text-[#888888] cursor-not-allowed"
+                onChange={(e) => {
+                  setProfile({ ...profile, college_email: e.target.value });
+                  setSaved(false);
+                }}
+                className="w-full bg-[#121212] border border-white/[0.145] px-4 py-2 font-mono text-xs text-white focus:outline-none focus:border-[#52a8ff]"
               />
             </div>
           </div>

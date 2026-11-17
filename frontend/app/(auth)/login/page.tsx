@@ -15,15 +15,15 @@ export default function LoginPage() {
 
   const handleCustomLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes("@") || !email.endsWith(".edu")) {
-      setError("Please use a valid college email address ending with .edu (or select a demo account below).");
+    if (!email.trim() || !email.includes("@") || !email.includes(".")) {
+      setError("Please enter a valid email address.");
       return;
     }
     setError("");
     const customUser: UserProfile = {
       id: "usr_" + Math.random().toString(36).substring(7),
       name: email.split("@")[0].replace(".", " "),
-      college_email: email,
+      college_email: email.trim(),
       year: 2,
       is_mentor: false,
       skills: ["python", "javascript"],
@@ -32,7 +32,7 @@ export default function LoginPage() {
     };
     setCurrentUser(customUser);
     setSuccess(true);
-    setTimeout(() => router.push("/requests"), 600);
+    setTimeout(() => router.push("/requests"), 400);
   };
 
   const handleDemoLogin = (profile: UserProfile) => {
@@ -67,7 +67,7 @@ export default function LoginPage() {
             Access Campus Network
           </h1>
           <p className="font-mono text-xs text-[#999999]">
-            Restricted to authenticated college email domains
+            Sign in with any email address or use an instant demo account
           </p>
         </div>
 
@@ -76,14 +76,14 @@ export default function LoginPage() {
           <form onSubmit={handleCustomLogin} className="space-y-4">
             <div>
               <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
-                College Email Address
+                Email Address
               </label>
               <div className="relative">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="student.cs25@college.edu"
+                  placeholder="e.g. name@gmail.com, student@college.edu..."
                   className="w-full bg-[#121212] border border-white/[0.145] px-4 py-2.5 font-mono text-xs text-white placeholder-[#666666] focus:outline-none focus:border-[#52a8ff]"
                 />
                 <Mail className="absolute right-3 top-3 w-4 h-4 text-[#666666]" />
@@ -100,7 +100,7 @@ export default function LoginPage() {
               type="submit"
               className="btn-square w-full py-2.5 text-xs text-[#121212]"
             >
-              <span>Send Magic Link &rarr;</span>
+              <span>Instant Login &rarr;</span>
             </button>
           </form>
 
