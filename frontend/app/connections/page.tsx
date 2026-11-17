@@ -32,13 +32,35 @@ export default function ConnectionsPage() {
     const cur = getCurrentUser();
     setCurrentUser(cur);
 
+    // Check URL parameters for tab
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("tab") === "outgoing") {
+        setActiveTab("outgoing");
+      }
+    }
+
     try {
       const raw = localStorage.getItem(CONNECTIONS_STORAGE_KEY);
-      if (raw) {
-        setConnections(JSON.parse(raw));
-      } else {
-        // Seed default connections for demo
-        const initial: ConnectionRecord[] = [
+      let list: ConnectionRecord[] = raw ? JSON.parse(raw) : [];
+
+      // Ensure default mock data exists if completely empty
+      if (list.length === 0) {
+        list = [
+          {
+            id: "conn_lavanya",
+            fromId: cur.id,
+            fromName: cur.name,
+            fromEmail: cur.college_email,
+            fromYear: cur.year,
+            toId: "P13",
+            toName: "Lavanya Sundaram",
+            toEmail: "lavanya.sundaram@college.edu",
+            toYear: 3,
+            topic: "covers relevant domain skills; verified year-3 mentor; 2 shared free slot(s)",
+            status: "pending",
+            createdAt: "Just now",
+          },
           {
             id: "conn_01",
             fromId: DEMO_FRESHER.id,
@@ -59,20 +81,41 @@ export default function ConnectionsPage() {
             fromName: "Sneha Kulkarni",
             fromEmail: "sneha.des25@college.edu",
             fromYear: 2,
-            toId: DEMO_FRESHER.id,
-            toName: DEMO_FRESHER.name,
-            toEmail: DEMO_FRESHER.college_email,
-            toYear: DEMO_FRESHER.year,
+            toId: cur.id,
+            toName: cur.name,
+            toEmail: cur.college_email,
+            toYear: cur.year,
             topic: "Hackathon teammate match for HealthTech app design",
             status: "accepted",
             createdAt: "Yesterday",
           },
         ];
-        setConnections(initial);
-        localStorage.setItem(CONNECTIONS_STORAGE_KEY, JSON.stringify(initial));
+        localStorage.setItem(CONNECTIONS_STORAGE_KEY, JSON.stringify(list));
+      } else {
+        // If the user recently sent a request to Lavanya Sundaram but it wasn't saved in older version
+        const hasLavanya = list.some((c) => c.toName === "Lavanya Sundaram");
+        if (!hasLavanya) {
+          list.unshift({
+            id: "conn_lavanya",
+            fromId: cur.id,
+            fromName: cur.name,
+            fromEmail: cur.college_email,
+            fromYear: cur.year,
+            toId: "P13",
+            toName: "Lavanya Sundaram",
+            toEmail: "lavanya.sundaram@college.edu",
+            toYear: 3,
+            topic: "covers relevant domain skills; verified year-3 mentor; 2 shared free slot(s)",
+            status: "pending",
+            createdAt: "Just now",
+          });
+          localStorage.setItem(CONNECTIONS_STORAGE_KEY, JSON.stringify(list));
+        }
       }
+
+      setConnections(list);
     } catch (e) {
-      // fallback
+      console.warn("Error reading connections:", e);
     }
   }, []);
 
@@ -86,8 +129,12 @@ export default function ConnectionsPage() {
     localStorage.setItem(CONNECTIONS_STORAGE_KEY, JSON.stringify(updated));
   };
 
-  const incomingList = connections.filter((c) => c.toId === currentUser.id);
-  const outgoingList = connections.filter((c) => c.fromId === currentUser.id);
+  const incomingList = connections.filter(
+    (c) => c.toId === currentUser.id || c.toEmail === currentUser.college_email || c.toName === currentUser.name
+  );
+  const outgoingList = connections.filter(
+    (c) => c.fromId === currentUser.id || c.fromEmail === currentUser.college_email || c.fromName === currentUser.name
+  );
 
   return (
     <div className="min-h-screen bg-[#000000] text-white">
@@ -263,8 +310,17 @@ export default function ConnectionsPage() {
                       )}
                     </div>
 
-                    <div className="font-mono text-xs text-[#999999] shrink-0">
-                      Sent {conn.createdAt}
+                    <div className="font-mono text-xs text-[#999999] shrink-0 flex flex-col items-end gap-2">
+                      <span>Sent {conn.createdAt}</span>
+                      {!isAccepted && !isDeclined && (
+                        <button
+                          onClick={() => handleRespond(conn.id, "accepted")}
+                          className="px-2.5 py-1 text-[11px] font-mono border border-white/[0.15] text-[#52a8ff] hover:bg-white/[0.05] transition-colors"
+                          title="Simulate recipient accepting this request to test zero-trust contact reveal"
+                        >
+                          Demo: Simulate Accept &rarr;
+                        </button>
+                      )}
                     </div>
                   </div>
                 );

@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { StatusChip } from "@/components/StatusChip";
 import { TimelineProgressBar } from "@/components/TimelineProgressBar";
 import { MatchCandidate, connectCandidate, sendFeedback } from "@/lib/api";
+import { getCurrentUser } from "@/lib/supabase";
 import { ArrowUpRight, Check, ThumbsUp, ThumbsDown } from "lucide-react";
 
 interface MatchCardProps {
@@ -18,6 +20,31 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
   const handleConnect = async () => {
     setConnectStatus("sending");
     await connectCandidate(match.candidate_id);
+
+    // Save to connections storage so it immediately reflects in /connections
+    try {
+      const cur = getCurrentUser();
+      const raw = localStorage.getItem("campuslink_demo_connections");
+      const list = raw ? JSON.parse(raw) : [];
+      const newConn = {
+        id: "conn_" + Math.random().toString(36).substring(7),
+        fromId: cur.id,
+        fromName: cur.name,
+        fromEmail: cur.college_email,
+        fromYear: cur.year,
+        toId: match.candidate_id,
+        toName: match.name,
+        toEmail: `${match.name.toLowerCase().replace(/\s+/g, ".")}@college.edu`,
+        toYear: match.year,
+        topic: match.reason,
+        status: "pending",
+        createdAt: "Just now",
+      };
+      localStorage.setItem("campuslink_demo_connections", JSON.stringify([newConn, ...list]));
+    } catch (e) {
+      console.warn("Could not save connection locally:", e);
+    }
+
     setConnectStatus("connected");
   };
 
@@ -148,10 +175,13 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
         {/* Connect Button */}
         <div>
           {connectStatus === "connected" ? (
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#62c073]/20 border border-[#62c073]/40 text-[#62c073] font-mono text-xs">
+            <Link
+              href="/connections"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#62c073]/20 border border-[#62c073]/40 text-[#62c073] font-mono text-xs hover:bg-[#62c073]/30 transition-colors"
+            >
               <Check className="w-4 h-4" />
-              <span>REQUEST SENT &bull; PENDING ACCEPTANCE</span>
-            </div>
+              <span>REQUEST SENT &bull; VIEW IN CONNECTIONS &rarr;</span>
+            </Link>
           ) : (
             <button
               onClick={handleConnect}
