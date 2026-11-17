@@ -23,7 +23,7 @@ export interface MatchResponse {
 }
 
 export interface PostMatchPayload {
-  kind: "teammate" | "mentor" | "notes";
+  kind: "teammate" | "mentor" | "notes" | "others";
   text: string;
   slots: string[];
   year: number;

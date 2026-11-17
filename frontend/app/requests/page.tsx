@@ -11,7 +11,7 @@ import { ArrowUpRight, Sparkles, Send, Clock } from "lucide-react";
 
 interface SavedRequest {
   id: string;
-  kind: "teammate" | "mentor" | "notes";
+  kind: "teammate" | "mentor" | "notes" | "others";
   text: string;
   slots: string[];
   createdAt: string;
@@ -30,7 +30,7 @@ const ALL_SLOTS = [
 export default function RequestsPage() {
   const router = useRouter();
   const [user, setUser] = useState<UserProfile | null>(null);
-  const [kind, setKind] = useState<"teammate" | "mentor" | "notes">("mentor");
+  const [kind, setKind] = useState<"teammate" | "mentor" | "notes" | "others">("mentor");
   const [text, setText] = useState("");
   const [selectedSlots, setSelectedSlots] = useState<string[]>(["wkend_morn", "wkday_eve"]);
   const [loading, setLoading] = useState(false);
@@ -142,11 +142,12 @@ export default function RequestsPage() {
               <label className="block font-mono text-xs text-[#999999] uppercase tracking-wider mb-2">
                 Request Category
               </label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
                   { id: "mentor", label: "Senior Mentor", desc: "Guide & placement tips" },
                   { id: "teammate", label: "Hackathon Teammate", desc: "Build & collaborate" },
                   { id: "notes", label: "Notes & Exam Prep", desc: "Subject materials" },
+                  { id: "others", label: "Others", desc: "Clubs, research & custom" },
                 ].map((k) => (
                   <button
                     key={k.id}

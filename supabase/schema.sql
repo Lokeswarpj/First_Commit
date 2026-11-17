@@ -15,7 +15,7 @@ create table if not exists profiles (
 create table if not exists requests (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references profiles(id) on delete cascade,
-  kind text check (kind in ('teammate','mentor','notes')),
+  kind text check (kind in ('teammate','mentor','notes','others')),
   text text not null,
   slots text[] default '{}',
   created_at timestamptz default now()
