@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { getCurrentUser, setCurrentUser, DEMO_FRESHER, DEMO_MENTOR, UserProfile } from "@/lib/supabase";
-import { RefreshCw } from "lucide-react";
+import { getCurrentUser, clearCurrentUser, DEMO_FRESHER, UserProfile } from "@/lib/supabase";
+import { LogOut } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
@@ -20,11 +20,9 @@ export const Navbar: React.FC = () => {
     setMounted(true);
   }, []);
 
-  const switchAccount = (newUser: UserProfile) => {
-    setCurrentUser(newUser);
-    setUser(newUser);
-    router.refresh();
-    window.location.reload();
+  const handleLogout = () => {
+    clearCurrentUser();
+    router.push("/login");
   };
 
   if (!mounted) {
@@ -104,7 +102,7 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Right: Account Switcher & User Status */}
+        {/* Right: User Status & Log Out Button */}
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 bg-[#121212] border border-white/[0.145] px-3 py-1 font-mono text-xs">
             <span
@@ -115,18 +113,14 @@ export const Navbar: React.FC = () => {
             <span className="text-[#999999]">({user.is_mentor ? "Senior Mentor" : `Year ${user.year}`})</span>
           </div>
 
-          {/* Quick Demo Switcher Button */}
+          {/* Log Out Button */}
           <button
-            onClick={() =>
-              switchAccount(
-                user.id === DEMO_FRESHER.id ? DEMO_MENTOR : DEMO_FRESHER
-              )
-            }
-            className="btn-square px-3 py-1.5 text-xs text-[#121212]"
-            title="Switch Demo Role"
+            onClick={handleLogout}
+            className="btn-square px-3 py-1.5 text-xs text-[#121212] hover:bg-[#ededed] cursor-pointer"
+            title="Log Out of CampusLink"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-[#121212]" />
-            <span className="hidden sm:inline">Switch: {user.id === DEMO_FRESHER.id ? "Senior Mentor" : "Fresher"}</span>
+            <LogOut className="w-3.5 h-3.5 text-[#121212]" />
+            <span>Log Out</span>
           </button>
         </div>
       </div>
