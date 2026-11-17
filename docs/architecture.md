@@ -113,3 +113,4 @@ sequenceDiagram
    - Recall@3: **94.4%** (vs. 74.1% keyword baseline).
 3. **Frontend Production Build**:
    - 10 static & dynamic routes compiled in 2.5s with zero errors on Next.js Turbopack.
+

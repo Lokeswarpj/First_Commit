@@ -58,3 +58,4 @@
 - **On Screen:** Return to the landing page or GitHub repo.
 - **What to Say:**  
   *"CampusLink turns fragmented campus communication into intelligent, privacy-first collaboration. Both the GitHub repository and live deployment links are in the submission. Thank you!"*
+

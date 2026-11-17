@@ -31,30 +31,30 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Center: Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-[16px] text-white font-normal">
+        <nav className="hidden md:flex items-center gap-8 text-[15px] text-white font-normal">
           <Link
             href="#metrics"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            Product
-          </Link>
-          <Link
-            href="#bento"
-            className="hover:text-[#52a8ff] transition-colors"
-          >
-            Pricing
+            Metrics
           </Link>
           <Link
             href="#event-stream"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            Docs
+            Telemetry
           </Link>
           <Link
-            href="/login"
+            href="#bento"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            About
+            Features
+          </Link>
+          <Link
+            href="/library"
+            className="hover:text-[#52a8ff] transition-colors"
+          >
+            Notes Library
           </Link>
         </nav>
 
@@ -62,10 +62,10 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-4">
           <Link
             href="/login"
-            className="btn-square px-[12px] py-[8px] text-[14px] sm:text-[15px]"
+            className="btn-square px-[14px] py-[8px] text-[14px]"
           >
-            <span>Book a demo</span>
-            <ArrowUpRight className="w-4 h-4 text-[#121212]" />
+            <span>Launch App</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#121212]" />
           </Link>
 
           <button
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
 
       {/* Full-Screen Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-[#000000]/95 z-40 flex flex-col justify-center items-center gap-8 md:hidden p-8 backdrop-blur-md">
+        <div className="fixed inset-0 bg-[#000000]/95 z-50 flex flex-col justify-center items-center gap-8 md:hidden p-8 backdrop-blur-md">
           <button
             onClick={() => setMobileMenuOpen(false)}
             className="absolute top-8 right-8 text-white p-2 hover:bg-white/10"
@@ -97,35 +97,35 @@ export const Header: React.FC = () => {
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
-            Product
-          </Link>
-          <Link
-            href="#bento"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-2xl font-medium text-white hover:text-[#52a8ff]"
-          >
-            Pricing
+            Metrics
           </Link>
           <Link
             href="#event-stream"
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
-            Docs
+            Telemetry
+          </Link>
+          <Link
+            href="#bento"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-2xl font-medium text-white hover:text-[#52a8ff]"
+          >
+            Features
+          </Link>
+          <Link
+            href="/library"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-2xl font-medium text-white hover:text-[#52a8ff]"
+          >
+            Notes Library
           </Link>
           <Link
             href="/login"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-2xl font-medium text-white hover:text-[#52a8ff]"
-          >
-            About
-          </Link>
-          <Link
-            href="#demo"
-            onClick={() => setMobileMenuOpen(false)}
             className="btn-square text-lg px-6 py-3 mt-4"
           >
-            <span>Book a demo</span>
+            <span>Launch App</span>
             <ArrowUpRight className="w-5 h-5 text-[#121212]" />
           </Link>
         </div>
@@ -133,4 +133,3 @@ export const Header: React.FC = () => {
     </header>
   );
 };
-
