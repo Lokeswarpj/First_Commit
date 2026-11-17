@@ -27,6 +27,40 @@ const ALL_SLOTS = [
   { id: "wkend_aft", label: "Weekend Aft" },
 ];
 
+const SAMPLES_BY_KIND: Record<"mentor" | "teammate" | "notes" | "others", string[]> = {
+  mentor: [
+    "Looking for a senior mentor in machine learning to guide my mini project",
+    "Need a senior mentor in competitive programming and DSA for campus placements",
+    "How do I prepare for cloud and DevOps interviews? Need a senior guide",
+    "Need an NLP mentor to guide me with fine-tuning LLMs and RAG pipelines",
+  ],
+  teammate: [
+    "Need a frontend developer for a hackathon, comfortable with React and Next.js",
+    "Need a UI/UX designer with Figma skills for a healthcare hackathon prototype",
+    "Looking for a mobile app developer with Flutter to build a cross-platform app",
+    "Need a backend API developer proficient in Python FastAPI and Docker",
+  ],
+  notes: [
+    "Need comprehensive notes and SQL queries for DBMS semester exams",
+    "Looking for OS concurrency and semaphores revision problem sheets",
+    "Need formula sheets and solved problems for Machine Learning CIE",
+    "Looking for Data Structures and Algorithms placement interview cheat sheets",
+  ],
+  others: [
+    "Looking for a co-organizer to start an AI research reading group on campus",
+    "Need a collaborator to build an IoT weather station with Arduino and ESP32",
+    "Looking for robotics club members interested in ROS2 and robot navigation",
+    "Seeking a peer to collaborate on writing and publishing an IEEE conference paper",
+  ],
+};
+
+const PLACEHOLDERS_BY_KIND: Record<"mentor" | "teammate" | "notes" | "others", string> = {
+  mentor: "e.g. Looking for a senior mentor in machine learning to guide my mini project, especially with PyTorch and NLP...",
+  teammate: "e.g. Need a frontend developer for a 36-hour hackathon, comfortable with React, Tailwind, and Next.js...",
+  notes: "e.g. Need comprehensive semester study materials, handwritten notes, and solved questions for DBMS...",
+  others: "e.g. Looking for peers to collaborate on an open source robotics project or campus club event...",
+};
+
 export default function RequestsPage() {
   const router = useRouter();
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -75,6 +109,11 @@ export default function RequestsPage() {
     setSelectedSlots((prev) =>
       prev.includes(slotId) ? prev.filter((s) => s !== slotId) : [...prev, slotId]
     );
+  };
+
+  const handleCategorySelect = (selectedKind: "mentor" | "teammate" | "notes" | "others") => {
+    setKind(selectedKind);
+    setText(SAMPLES_BY_KIND[selectedKind][0]);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -152,7 +191,7 @@ export default function RequestsPage() {
                   <button
                     key={k.id}
                     type="button"
-                    onClick={() => setKind(k.id as any)}
+                    onClick={() => handleCategorySelect(k.id as any)}
                     className={`p-3.5 text-left border font-mono transition-colors ${
                       kind === k.id
                         ? "bg-[#161616] border-[#52a8ff] text-white"
@@ -185,30 +224,34 @@ export default function RequestsPage() {
                 rows={3}
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="e.g. Looking for a senior mentor in machine learning to guide my mini project, especially with PyTorch and NLP..."
+                placeholder={PLACEHOLDERS_BY_KIND[kind]}
                 className="w-full bg-[#121212] border border-white/[0.145] p-4 font-mono text-xs text-white placeholder-[#666666] focus:outline-none focus:border-[#52a8ff] leading-relaxed"
               />
             </div>
 
-            {/* Quick Prefill Samples */}
+            {/* Dynamic Quick Prefill Samples by Category */}
             <div className="space-y-1.5">
-              <span className="font-mono text-[11px] text-[#999999]">
-                Quick Test Samples:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Looking for a senior mentor in machine learning to guide my mini project",
-                  "Need a frontend developer for a hackathon, comfortable with React",
-                  "Need help with DBMS and SQL for upcoming semester exams",
-                  "Want a teammate to build a chatbot using LLMs and Python",
-                ].map((sample, idx) => (
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[11px] text-[#999999]">
+                  Quick Test Samples ({kind.toUpperCase()}):
+                </span>
+                <span className="font-mono text-[10px] text-[#52a8ff]">
+                  Click any sample to test
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {SAMPLES_BY_KIND[kind].map((sample, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setText(sample)}
-                    className="px-2.5 py-1 bg-[#121212] border border-white/[0.1] hover:border-white/30 font-mono text-[11px] text-[#cccccc] text-left"
+                    className={`px-3 py-2 border text-left font-mono text-[11px] transition-colors ${
+                      text === sample
+                        ? "bg-[#161616] border-[#52a8ff] text-white"
+                        : "bg-[#121212] border-white/[0.1] hover:border-white/30 text-[#cccccc]"
+                    }`}
                   >
-                    &ldquo;{sample.substring(0, 48)}...&rdquo;
+                    &ldquo;{sample}&rdquo;
                   </button>
                 ))}
               </div>
