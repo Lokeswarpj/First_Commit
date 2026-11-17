@@ -33,35 +33,35 @@ export const Header: React.FC = () => {
         {/* Center: Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 text-[16px] text-white font-normal">
           <Link
-            href="#product"
+            href="#metrics"
             className="hover:text-[#52a8ff] transition-colors"
           >
             Product
           </Link>
           <Link
-            href="#metrics"
+            href="#bento"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            Metrics
+            Pricing
           </Link>
           <Link
             href="#event-stream"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            Event Stream
+            Docs
           </Link>
           <Link
-            href="#bento"
+            href="/login"
             className="hover:text-[#52a8ff] transition-colors"
           >
-            Features
+            About
           </Link>
         </nav>
 
         {/* Right: CTA & Mobile Hamburger */}
         <div className="flex items-center gap-4">
           <Link
-            href="#demo"
+            href="/login"
             className="btn-square px-[12px] py-[8px] text-[14px] sm:text-[15px]"
           >
             <span>Book a demo</span>
@@ -93,32 +93,32 @@ export const Header: React.FC = () => {
           </button>
 
           <Link
-            href="#product"
+            href="#metrics"
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
             Product
           </Link>
           <Link
-            href="#metrics"
+            href="#bento"
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
-            Metrics
+            Pricing
           </Link>
           <Link
             href="#event-stream"
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
-            Event Stream
+            Docs
           </Link>
           <Link
-            href="#bento"
+            href="/login"
             onClick={() => setMobileMenuOpen(false)}
             className="text-2xl font-medium text-white hover:text-[#52a8ff]"
           >
-            Features
+            About
           </Link>
           <Link
             href="#demo"

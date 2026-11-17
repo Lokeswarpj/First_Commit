@@ -96,7 +96,7 @@ export default function Home() {
 
             <div className="pt-2">
               <Link
-                href="#event-stream"
+                href="/login"
                 className="btn-square text-[20px] px-7 py-3"
               >
                 <span>Book a demo</span>
