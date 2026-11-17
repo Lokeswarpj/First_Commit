@@ -1,0 +1,47 @@
+
+[R1] (teammate) Need a frontend developer for a hackathon, comfortable with React
+  1. Harsha   100.0  covers frontend; year 3; 2 shared free slot(s)
+  2. Rohit     75.9  covers frontend; year 4; 2 shared free slot(s)
+  3. Arjun     59.6  covers frontend; year 1; 1 shared free slot(s)
+
+[R2] (mentor) Looking for a senior mentor in machine learning to guide my mini project
+  1. Ananya   100.0  covers ml; verified year-3 mentor; 2 shared free slot(s)
+  2. Meera     62.5  covers ml; verified year-3 mentor; 1 shared free slot(s)
+  3. Nisha     40.0  related strength in nlp_llm; verified year-4 mentor; 2 shared free slot(s)
+
+[R3] (teammate) Need someone good at app UI design for our hackathon project
+  1. Sneha    100.0  covers design, mobile; year 2; 2 shared free slot(s)
+  2. Harsha    46.4  covers design; related strength in frontend; year 3; no shared slot yet
+  3. Bhavana   41.6  covers design; year 2; no shared slot yet
+
+[R4] (mentor) Need help with DBMS and SQL for upcoming exams
+  1. Divya    100.0  covers database; verified year-4 mentor; 2 shared free slot(s)
+  2. Rohit     56.1  covers database; verified year-4 mentor; 1 shared free slot(s)
+  3. Tarun     44.7  covers database; no shared slot yet
+
+[R5] (teammate) Want a teammate to build a chatbot using LLMs for an internship project
+  1. Nisha    100.0  covers nlp_llm; year 4; 2 shared free slot(s)
+  2. Ananya    98.8  covers nlp_llm; year 3; 2 shared free slot(s)
+  3. Meera     30.0  related strength in ml; year 3; 1 shared free slot(s)
+
+[R6] (mentor) How do I prepare for placements and coding rounds? Need a senior to guide me
+  1. Lavanya  100.0  covers placement; verified year-3 mentor; 2 shared free slot(s)
+  2. Divya     71.1  covers placement; verified year-4 mentor; 2 shared free slot(s)
+  3. Tarun     50.5  covers placement; no shared slot yet
+
+[R7] (teammate) Need a mobile app developer for a cross platform app
+  1. Kiran     87.4  covers mobile; year 2; 2 shared free slot(s)
+  2. Sneha     85.0  covers mobile; year 2; no shared slot yet
+  3. Rohit     60.9  covers mobile; year 4; 2 shared free slot(s)
+
+[R8] (teammate) Looking for someone with computer vision and OpenCV for a vital signs project
+  1. Meera    100.0  covers vision; year 3; 2 shared free slot(s)
+  2. Ananya    30.0  related strength in ml; year 3; 1 shared free slot(s)
+  3. Bhavana   17.5  year 2; 1 shared free slot(s)
+
+[R9] (teammate) Need a backend API developer, Python preferred
+  1. Vikram   100.0  covers backend; year 2; 2 shared free slot(s)
+  2. Tarun     68.7  covers backend; year 2; 1 shared free slot(s)
+  3. Rohit     60.3  covers backend; year 4; 2 shared free slot(s)
+
+EVAL {"m_p": 0.593, "m_h": 1.0, "b_p": 0.444, "b_h": 0.778}

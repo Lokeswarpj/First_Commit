@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: #0a0a0a;
+  --card-ring: rgba(255, 255, 255, 0.145);
+  --accent-blue: #52a8ff;
+  --success-green: #62c073;
+  --muted-text: #999999;
+  --chip-bg: #1f1f1f;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* Zero-radius brutalist buttons */
+.btn-square {
+  border-radius: 0px !important;
+  background-color: #ffffff;
+  color: #121212;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-square:hover {
+  background-color: #ededed;
+  opacity: 0.95;
+}
+
+/* Status Chip Pill (100px radius) */
+.v-chip {
+  display: inline-flex;
+  align-items: center;
+  background-color: #1f1f1f;
+  border-radius: 100px !important;
+  padding: 4px 10px;
+  gap: 6px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.v-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* Card layout */
+.card-dark {
+  background-color: #0a0a0a;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.145);
+  border-radius: 0px;
+}
+
+/* Fluid Headline */
+.headline-fluid {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 5.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+@media (min-width: 1024px) {
+  .headline-fluid {
+    letter-spacing: -3.36px;
+  }
+}
+
+/* Scrim overlay */
+.hero-scrim {
+  background: linear-gradient(to top, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0) 93.785%);
+}
+
+.hero-bottom-fade {
+  background: linear-gradient(to top, #000000 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0) 100%);
+}

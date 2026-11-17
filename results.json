@@ -1,0 +1,1125 @@
+{
+ "matches": {
+  "R1": [
+   {
+    "id": "P10",
+    "name": "Harsha",
+    "year": 3,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "react",
+     "tailwind",
+     "typescript",
+     "next.js"
+    ],
+    "why": "covers frontend; year 3; 2 shared free slot(s)"
+   },
+   {
+    "id": "P02",
+    "name": "Rohit",
+    "year": 4,
+    "score": 75.9,
+    "parts": {
+     "semantic": 0.55,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 0.6
+    },
+    "skills": [
+     "react",
+     "node.js",
+     "mongodb",
+     "javascript"
+    ],
+    "why": "covers frontend; year 4; 2 shared free slot(s)"
+   },
+   {
+    "id": "P06",
+    "name": "Arjun",
+    "year": 1,
+    "score": 59.6,
+    "parts": {
+     "semantic": 0.32,
+     "coverage": 1.0,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "html",
+     "css",
+     "javascript"
+    ],
+    "why": "covers frontend; year 1; 1 shared free slot(s)"
+   }
+  ],
+  "R2": [
+   {
+    "id": "P01",
+    "name": "Ananya",
+    "year": 3,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "python",
+     "machine learning",
+     "pandas",
+     "scikit-learn"
+    ],
+    "why": "covers ml; verified year-3 mentor; 2 shared free slot(s)"
+   },
+   {
+    "id": "P07",
+    "name": "Meera",
+    "year": 3,
+    "score": 62.5,
+    "parts": {
+     "semantic": 0.39,
+     "coverage": 1.0,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "deep learning",
+     "pytorch",
+     "computer vision",
+     "opencv"
+    ],
+    "why": "covers ml; verified year-3 mentor; 1 shared free slot(s)"
+   },
+   {
+    "id": "P11",
+    "name": "Nisha",
+    "year": 4,
+    "score": 40.0,
+    "parts": {
+     "semantic": 0.0,
+     "coverage": 0.5,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "nlp",
+     "llm",
+     "langchain",
+     "python",
+     "rag"
+    ],
+    "why": "related strength in nlp_llm; verified year-4 mentor; 2 shared free slot(s)"
+   }
+  ],
+  "R3": [
+   {
+    "id": "P03",
+    "name": "Sneha",
+    "year": 2,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "figma",
+     "ui/ux",
+     "canva"
+    ],
+    "why": "covers design, mobile; year 2; 2 shared free slot(s)"
+   },
+   {
+    "id": "P10",
+    "name": "Harsha",
+    "year": 3,
+    "score": 46.4,
+    "parts": {
+     "semantic": 0.31,
+     "coverage": 0.75,
+     "availability": 0.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "react",
+     "tailwind",
+     "typescript",
+     "next.js"
+    ],
+    "why": "covers design; related strength in frontend; year 3; no shared slot yet"
+   },
+   {
+    "id": "P15",
+    "name": "Bhavana",
+    "year": 2,
+    "score": 41.6,
+    "parts": {
+     "semantic": 0.37,
+     "coverage": 0.5,
+     "availability": 0.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "unity",
+     "c#",
+     "game design"
+    ],
+    "why": "covers design; year 2; no shared slot yet"
+   }
+  ],
+  "R4": [
+   {
+    "id": "P05",
+    "name": "Divya",
+    "year": 4,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "sql",
+     "dbms",
+     "postgresql",
+     "data structures"
+    ],
+    "why": "covers database; verified year-4 mentor; 2 shared free slot(s)"
+   },
+   {
+    "id": "P02",
+    "name": "Rohit",
+    "year": 4,
+    "score": 56.1,
+    "parts": {
+     "semantic": 0.25,
+     "coverage": 1.0,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "react",
+     "node.js",
+     "mongodb",
+     "javascript"
+    ],
+    "why": "covers database; verified year-4 mentor; 1 shared free slot(s)"
+   },
+   {
+    "id": "P12",
+    "name": "Tarun",
+    "year": 2,
+    "score": 44.7,
+    "parts": {
+     "semantic": 0.28,
+     "coverage": 1.0,
+     "availability": 0.0,
+     "fit": 0.2
+    },
+    "skills": [
+     "java",
+     "spring boot",
+     "mysql"
+    ],
+    "why": "covers database; no shared slot yet"
+   }
+  ],
+  "R5": [
+   {
+    "id": "P11",
+    "name": "Nisha",
+    "year": 4,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "nlp",
+     "llm",
+     "langchain",
+     "python",
+     "rag"
+    ],
+    "why": "covers nlp_llm; year 4; 2 shared free slot(s)"
+   },
+   {
+    "id": "P01",
+    "name": "Ananya",
+    "year": 3,
+    "score": 98.8,
+    "parts": {
+     "semantic": 0.97,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "python",
+     "machine learning",
+     "pandas",
+     "scikit-learn"
+    ],
+    "why": "covers nlp_llm; year 3; 2 shared free slot(s)"
+   },
+   {
+    "id": "P07",
+    "name": "Meera",
+    "year": 3,
+    "score": 30.0,
+    "parts": {
+     "semantic": 0.0,
+     "coverage": 0.5,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "deep learning",
+     "pytorch",
+     "computer vision",
+     "opencv"
+    ],
+    "why": "related strength in ml; year 3; 1 shared free slot(s)"
+   }
+  ],
+  "R6": [
+   {
+    "id": "P13",
+    "name": "Lavanya",
+    "year": 3,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "aptitude",
+     "dsa",
+     "c++",
+     "competitive programming"
+    ],
+    "why": "covers placement; verified year-3 mentor; 2 shared free slot(s)"
+   },
+   {
+    "id": "P05",
+    "name": "Divya",
+    "year": 4,
+    "score": 71.1,
+    "parts": {
+     "semantic": 0.36,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "sql",
+     "dbms",
+     "postgresql",
+     "data structures"
+    ],
+    "why": "covers placement; verified year-4 mentor; 2 shared free slot(s)"
+   },
+   {
+    "id": "P12",
+    "name": "Tarun",
+    "year": 2,
+    "score": 50.5,
+    "parts": {
+     "semantic": 0.41,
+     "coverage": 1.0,
+     "availability": 0.0,
+     "fit": 0.2
+    },
+    "skills": [
+     "java",
+     "spring boot",
+     "mysql"
+    ],
+    "why": "covers placement; no shared slot yet"
+   }
+  ],
+  "R7": [
+   {
+    "id": "P04",
+    "name": "Kiran",
+    "year": 2,
+    "score": 87.4,
+    "parts": {
+     "semantic": 0.72,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "flutter",
+     "dart",
+     "firebase"
+    ],
+    "why": "covers mobile; year 2; 2 shared free slot(s)"
+   },
+   {
+    "id": "P03",
+    "name": "Sneha",
+    "year": 2,
+    "score": 85.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 0.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "figma",
+     "ui/ux",
+     "canva"
+    ],
+    "why": "covers mobile; year 2; no shared slot yet"
+   },
+   {
+    "id": "P02",
+    "name": "Rohit",
+    "year": 4,
+    "score": 60.9,
+    "parts": {
+     "semantic": 0.22,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 0.6
+    },
+    "skills": [
+     "react",
+     "node.js",
+     "mongodb",
+     "javascript"
+    ],
+    "why": "covers mobile; year 4; 2 shared free slot(s)"
+   }
+  ],
+  "R8": [
+   {
+    "id": "P07",
+    "name": "Meera",
+    "year": 3,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "deep learning",
+     "pytorch",
+     "computer vision",
+     "opencv"
+    ],
+    "why": "covers vision; year 3; 2 shared free slot(s)"
+   },
+   {
+    "id": "P01",
+    "name": "Ananya",
+    "year": 3,
+    "score": 30.0,
+    "parts": {
+     "semantic": 0.0,
+     "coverage": 0.5,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "python",
+     "machine learning",
+     "pandas",
+     "scikit-learn"
+    ],
+    "why": "related strength in ml; year 3; 1 shared free slot(s)"
+   },
+   {
+    "id": "P15",
+    "name": "Bhavana",
+    "year": 2,
+    "score": 17.5,
+    "parts": {
+     "semantic": 0.0,
+     "coverage": 0.0,
+     "availability": 0.5,
+     "fit": 1.0
+    },
+    "skills": [
+     "unity",
+     "c#",
+     "game design"
+    ],
+    "why": "year 2; 1 shared free slot(s)"
+   }
+  ],
+  "R9": [
+   {
+    "id": "P08",
+    "name": "Vikram",
+    "year": 2,
+    "score": 100.0,
+    "parts": {
+     "semantic": 1.0,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 1.0
+    },
+    "skills": [
+     "python",
+     "fastapi",
+     "docker",
+     "rest api"
+    ],
+    "why": "covers backend; year 2; 2 shared free slot(s)"
+   },
+   {
+    "id": "P12",
+    "name": "Tarun",
+    "year": 2,
+    "score": 68.7,
+    "parts": {
+     "semantic": 0.53,
+     "coverage": 1.0,
+     "availability": 0.33,
+     "fit": 1.0
+    },
+    "skills": [
+     "java",
+     "spring boot",
+     "mysql"
+    ],
+    "why": "covers backend; year 2; 1 shared free slot(s)"
+   },
+   {
+    "id": "P02",
+    "name": "Rohit",
+    "year": 4,
+    "score": 60.3,
+    "parts": {
+     "semantic": 0.21,
+     "coverage": 1.0,
+     "availability": 1.0,
+     "fit": 0.6
+    },
+    "skills": [
+     "react",
+     "node.js",
+     "mongodb",
+     "javascript"
+    ],
+    "why": "covers backend; year 4; 2 shared free slot(s)"
+   }
+  ]
+ },
+ "eval_rows": [
+  {
+   "id": "R1",
+   "text": "Need a frontend developer for a hackathon, comfortable with React",
+   "relevant": [
+    "P02",
+    "P10"
+   ],
+   "matcher": [
+    "P10",
+    "P02",
+    "P06"
+   ],
+   "baseline": [
+    "P10",
+    "P02",
+    "P01"
+   ],
+   "m_p": 0.67,
+   "b_p": 0.67,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R2",
+   "text": "Looking for a senior mentor in machine learning to guide my mini project",
+   "relevant": [
+    "P01",
+    "P07",
+    "P11"
+   ],
+   "matcher": [
+    "P01",
+    "P07",
+    "P11"
+   ],
+   "baseline": [
+    "P01",
+    "P06",
+    "P07"
+   ],
+   "m_p": 1.0,
+   "b_p": 0.67,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R3",
+   "text": "Need someone good at app UI design for our hackathon project",
+   "relevant": [
+    "P03",
+    "P10"
+   ],
+   "matcher": [
+    "P03",
+    "P10",
+    "P15"
+   ],
+   "baseline": [
+    "P03",
+    "P10",
+    "P15"
+   ],
+   "m_p": 0.67,
+   "b_p": 0.67,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R4",
+   "text": "Need help with DBMS and SQL for upcoming exams",
+   "relevant": [
+    "P05",
+    "P12"
+   ],
+   "matcher": [
+    "P05",
+    "P02",
+    "P12"
+   ],
+   "baseline": [
+    "P05",
+    "P01",
+    "P02"
+   ],
+   "m_p": 0.67,
+   "b_p": 0.33,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R5",
+   "text": "Want a teammate to build a chatbot using LLMs for an internship project",
+   "relevant": [
+    "P11",
+    "P08"
+   ],
+   "matcher": [
+    "P11",
+    "P01",
+    "P07"
+   ],
+   "baseline": [
+    "P01",
+    "P02",
+    "P03"
+   ],
+   "m_p": 0.33,
+   "b_p": 0.0,
+   "m_h": 1,
+   "b_h": 0
+  },
+  {
+   "id": "R6",
+   "text": "How do I prepare for placements and coding rounds? Need a senior to guide me",
+   "relevant": [
+    "P13",
+    "P05"
+   ],
+   "matcher": [
+    "P13",
+    "P05",
+    "P12"
+   ],
+   "baseline": [
+    "P13",
+    "P05",
+    "P12"
+   ],
+   "m_p": 0.67,
+   "b_p": 0.67,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R7",
+   "text": "Need a mobile app developer for a cross platform app",
+   "relevant": [
+    "P04"
+   ],
+   "matcher": [
+    "P04",
+    "P03",
+    "P02"
+   ],
+   "baseline": [
+    "P03",
+    "P04",
+    "P01"
+   ],
+   "m_p": 0.33,
+   "b_p": 0.33,
+   "m_h": 1,
+   "b_h": 0
+  },
+  {
+   "id": "R8",
+   "text": "Looking for someone with computer vision and OpenCV for a vital signs project",
+   "relevant": [
+    "P07"
+   ],
+   "matcher": [
+    "P07",
+    "P01",
+    "P15"
+   ],
+   "baseline": [
+    "P07",
+    "P01",
+    "P02"
+   ],
+   "m_p": 0.33,
+   "b_p": 0.33,
+   "m_h": 1,
+   "b_h": 1
+  },
+  {
+   "id": "R9",
+   "text": "Need a backend API developer, Python preferred",
+   "relevant": [
+    "P08",
+    "P12"
+   ],
+   "matcher": [
+    "P08",
+    "P12",
+    "P02"
+   ],
+   "baseline": [
+    "P08",
+    "P01",
+    "P09"
+   ],
+   "m_p": 0.67,
+   "b_p": 0.33,
+   "m_h": 1,
+   "b_h": 1
+  }
+ ],
+ "eval_total": {
+  "m_p": 0.593,
+  "m_h": 1.0,
+  "b_p": 0.444,
+  "b_h": 0.778
+ },
+ "requests": [
+  {
+   "id": "R1",
+   "kind": "teammate",
+   "year": 2,
+   "avail": [
+    "wkend_aft",
+    "wkday_eve"
+   ],
+   "text": "Need a frontend developer for a hackathon, comfortable with React",
+   "relevant": [
+    "P02",
+    "P10"
+   ]
+  },
+  {
+   "id": "R2",
+   "kind": "mentor",
+   "year": 2,
+   "avail": [
+    "wkend_morn",
+    "wkday_eve"
+   ],
+   "text": "Looking for a senior mentor in machine learning to guide my mini project",
+   "relevant": [
+    "P01",
+    "P07",
+    "P11"
+   ]
+  },
+  {
+   "id": "R3",
+   "kind": "teammate",
+   "year": 2,
+   "avail": [
+    "wkend_morn",
+    "wkday_aft"
+   ],
+   "text": "Need someone good at app UI design for our hackathon project",
+   "relevant": [
+    "P03",
+    "P10"
+   ]
+  },
+  {
+   "id": "R4",
+   "kind": "mentor",
+   "year": 2,
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ],
+   "text": "Need help with DBMS and SQL for upcoming exams",
+   "relevant": [
+    "P05",
+    "P12"
+   ]
+  },
+  {
+   "id": "R5",
+   "kind": "teammate",
+   "year": 3,
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ],
+   "text": "Want a teammate to build a chatbot using LLMs for an internship project",
+   "relevant": [
+    "P11",
+    "P08"
+   ]
+  },
+  {
+   "id": "R6",
+   "kind": "mentor",
+   "year": 2,
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ],
+   "text": "How do I prepare for placements and coding rounds? Need a senior to guide me",
+   "relevant": [
+    "P13",
+    "P05"
+   ]
+  },
+  {
+   "id": "R7",
+   "kind": "teammate",
+   "year": 2,
+   "avail": [
+    "wkend_aft",
+    "wkday_eve"
+   ],
+   "text": "Need a mobile app developer for a cross platform app",
+   "relevant": [
+    "P04"
+   ]
+  },
+  {
+   "id": "R8",
+   "kind": "teammate",
+   "year": 3,
+   "avail": [
+    "wkend_morn",
+    "wkend_aft"
+   ],
+   "text": "Looking for someone with computer vision and OpenCV for a vital signs project",
+   "relevant": [
+    "P07"
+   ]
+  },
+  {
+   "id": "R9",
+   "kind": "teammate",
+   "year": 2,
+   "avail": [
+    "wkday_eve",
+    "wkend_aft"
+   ],
+   "text": "Need a backend API developer, Python preferred",
+   "relevant": [
+    "P08",
+    "P12"
+   ]
+  }
+ ],
+ "profiles": [
+  {
+   "id": "P01",
+   "name": "Ananya",
+   "year": 3,
+   "mentor": true,
+   "skills": [
+    "python",
+    "machine learning",
+    "pandas",
+    "scikit-learn"
+   ],
+   "interests": "kaggle, nlp, research papers",
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ]
+  },
+  {
+   "id": "P02",
+   "name": "Rohit",
+   "year": 4,
+   "mentor": true,
+   "skills": [
+    "react",
+    "node.js",
+    "mongodb",
+    "javascript"
+   ],
+   "interests": "web apps, hackathons, startups",
+   "avail": [
+    "wkend_aft",
+    "wkday_eve"
+   ]
+  },
+  {
+   "id": "P03",
+   "name": "Sneha",
+   "year": 2,
+   "mentor": false,
+   "skills": [
+    "figma",
+    "ui/ux",
+    "canva"
+   ],
+   "interests": "app design, user research",
+   "avail": [
+    "wkend_morn",
+    "wkday_aft"
+   ]
+  },
+  {
+   "id": "P04",
+   "name": "Kiran",
+   "year": 2,
+   "mentor": false,
+   "skills": [
+    "flutter",
+    "dart",
+    "firebase"
+   ],
+   "interests": "mobile apps, hackathons",
+   "avail": [
+    "wkend_aft",
+    "wkday_eve"
+   ]
+  },
+  {
+   "id": "P05",
+   "name": "Divya",
+   "year": 4,
+   "mentor": true,
+   "skills": [
+    "sql",
+    "dbms",
+    "postgresql",
+    "data structures"
+   ],
+   "interests": "databases, placements, teaching notes",
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ]
+  },
+  {
+   "id": "P06",
+   "name": "Arjun",
+   "year": 1,
+   "mentor": false,
+   "skills": [
+    "html",
+    "css",
+    "javascript"
+   ],
+   "interests": "learning web dev",
+   "avail": [
+    "wkday_aft",
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P07",
+   "name": "Meera",
+   "year": 3,
+   "mentor": true,
+   "skills": [
+    "deep learning",
+    "pytorch",
+    "computer vision",
+    "opencv"
+   ],
+   "interests": "medical imaging, rppg, research",
+   "avail": [
+    "wkend_morn",
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P08",
+   "name": "Vikram",
+   "year": 2,
+   "mentor": false,
+   "skills": [
+    "python",
+    "fastapi",
+    "docker",
+    "rest api"
+   ],
+   "interests": "backend, cloud, devops",
+   "avail": [
+    "wkday_eve",
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P09",
+   "name": "Pooja",
+   "year": 1,
+   "mentor": false,
+   "skills": [
+    "python",
+    "c",
+    "arduino"
+   ],
+   "interests": "iot, robotics club",
+   "avail": [
+    "wkday_aft",
+    "wkend_morn"
+   ]
+  },
+  {
+   "id": "P10",
+   "name": "Harsha",
+   "year": 3,
+   "mentor": true,
+   "skills": [
+    "react",
+    "tailwind",
+    "typescript",
+    "next.js"
+   ],
+   "interests": "frontend, design systems, hackathons",
+   "avail": [
+    "wkday_eve",
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P11",
+   "name": "Nisha",
+   "year": 4,
+   "mentor": true,
+   "skills": [
+    "nlp",
+    "llm",
+    "langchain",
+    "python",
+    "rag"
+   ],
+   "interests": "ai agents, chatbots, internships",
+   "avail": [
+    "wkend_morn",
+    "wkday_eve"
+   ]
+  },
+  {
+   "id": "P12",
+   "name": "Tarun",
+   "year": 2,
+   "mentor": false,
+   "skills": [
+    "java",
+    "spring boot",
+    "mysql"
+   ],
+   "interests": "backend, placements",
+   "avail": [
+    "wkday_aft",
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P13",
+   "name": "Lavanya",
+   "year": 3,
+   "mentor": true,
+   "skills": [
+    "aptitude",
+    "dsa",
+    "c++",
+    "competitive programming"
+   ],
+   "interests": "placements, coding contests",
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ]
+  },
+  {
+   "id": "P14",
+   "name": "Sachin",
+   "year": 1,
+   "mentor": false,
+   "skills": [
+    "excel",
+    "power bi"
+   ],
+   "interests": "data analysis, finance",
+   "avail": [
+    "wkday_aft"
+   ]
+  },
+  {
+   "id": "P15",
+   "name": "Bhavana",
+   "year": 2,
+   "mentor": false,
+   "skills": [
+    "unity",
+    "c#",
+    "game design"
+   ],
+   "interests": "games, 3d",
+   "avail": [
+    "wkend_aft"
+   ]
+  },
+  {
+   "id": "P16",
+   "name": "Deepak",
+   "year": 3,
+   "mentor": true,
+   "skills": [
+    "cybersecurity",
+    "linux",
+    "networking",
+    "ctf"
+   ],
+   "interests": "security, ethical hacking",
+   "avail": [
+    "wkday_eve",
+    "wkend_morn"
+   ]
+  }
+ ]
+}
