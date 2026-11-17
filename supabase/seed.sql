@@ -206,3 +206,4 @@ values
    array['cybersecurity', 'networking', 'linux', 'wireshark'], 
    'https://storage.supabase.co/notes/wireshark_security.pdf', true)
 on conflict (id) do nothing;
+

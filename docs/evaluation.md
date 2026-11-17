@@ -108,3 +108,4 @@ In accordance with Phase 3 guidelines, we analyzed augmenting TF-IDF with `all-M
 2. **Vocabulary Dependence:** Queries containing brand-new frameworks not yet cataloged in `CONCEPTS` (e.g. `Bun.js` or `Mojo`) fall back to pure character/word n-gram TF-IDF similarity without concept coverage credit.
 3. **Discrete Time Slot Granularity:** The availability score relies on 4 coarse bucket slots (`wkday_aft`, `wkday_eve`, `wkend_morn`, `wkend_aft`). Real-world student schedules may have intra-slot conflicts unless integrated with Google Calendar or college timetables.
 4. **Subjective Soft Factors:** The engine scores technical capabilities and availability, but cannot measure student personality compatibility, communication style, or past reliability.
+
