@@ -54,18 +54,68 @@ export async function requestMatches(payload: PostMatchPayload): Promise<MatchRe
   return fallbackClientMatch(payload);
 }
 
-export async function connectCandidate(matchId: string): Promise<{ connection_id: string; status: string }> {
+export async function connectCandidate(
+  matchId: string,
+  details?: {
+    from_name?: string;
+    from_email?: string;
+    from_year?: number;
+    to_name?: string;
+    to_year?: number;
+    topic?: string;
+  }
+): Promise<{ connection_id: string; status: string; connection?: any }> {
   const token = getAuthToken();
   try {
     const res = await fetch(`${API_BASE}/matches/${matchId}/connect`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(details || {}),
     });
     if (res.ok) return await res.json();
   } catch (e) {
     // fallback
   }
   return { connection_id: "conn_" + Math.random().toString(36).substring(7), status: "pending" };
+}
+
+export async function fetchConnectionsApi(): Promise<any[]> {
+  const token = getAuthToken();
+  try {
+    const res = await fetch(`${API_BASE}/connections`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data.connections || [];
+    }
+  } catch (e) {
+    // fallback
+  }
+  return [];
+}
+
+export async function respondConnectionApi(
+  connectionId: string,
+  status: "accepted" | "declined"
+): Promise<boolean> {
+  const token = getAuthToken();
+  try {
+    const res = await fetch(`${API_BASE}/connections/${connectionId}/respond`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ status }),
+    });
+    return res.ok;
+  } catch (e) {
+    return false;
+  }
 }
 
 export async function sendFeedback(matchId: string, feedback: "good" | "bad"): Promise<{ ok: boolean }> {

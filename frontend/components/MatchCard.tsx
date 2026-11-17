@@ -19,11 +19,20 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
 
   const handleConnect = async () => {
     setConnectStatus("sending");
-    await connectCandidate(match.candidate_id);
+    const cur = getCurrentUser();
+
+    // Call API with full details so backend can store it
+    await connectCandidate(match.candidate_id, {
+      from_name: cur.name,
+      from_email: cur.college_email,
+      from_year: cur.year,
+      to_name: match.name,
+      to_year: match.year,
+      topic: match.reason,
+    });
 
     // Save to connections storage so it immediately reflects in /connections
     try {
-      const cur = getCurrentUser();
       const raw = localStorage.getItem("campuslink_demo_connections");
       const list = raw ? JSON.parse(raw) : [];
       const newConn = {
@@ -38,9 +47,18 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
         toYear: match.year,
         topic: match.reason,
         status: "pending",
+        isOutgoing: true,
         createdAt: "Just now",
       };
-      localStorage.setItem("campuslink_demo_connections", JSON.stringify([newConn, ...list]));
+
+      // Filter out any older duplicate to the same recipient, put newest on top
+      const filtered = list.filter((c: any) => c.toName !== match.name);
+      localStorage.setItem("campuslink_demo_connections", JSON.stringify([newConn, ...filtered]));
+      localStorage.setItem("campuslink_latest_sent_connection", JSON.stringify(newConn));
+
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("campuslink_connection_created", { detail: newConn }));
+      }
     } catch (e) {
       console.warn("Could not save connection locally:", e);
     }
@@ -176,7 +194,7 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, rank }) => {
         <div>
           {connectStatus === "connected" ? (
             <Link
-              href="/connections"
+              href="/connections?tab=outgoing"
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#62c073]/20 border border-[#62c073]/40 text-[#62c073] font-mono text-xs hover:bg-[#62c073]/30 transition-colors"
             >
               <Check className="w-4 h-4" />

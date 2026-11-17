@@ -100,11 +100,87 @@ def save_request_and_matches(user_id: str, req_body: dict, matches: list) -> str
 
     return request_id
 
-def create_connection(from_id: str, match_id: str) -> dict:
-    conn_id = str(uuid.uuid4())
-    return {"connection_id": conn_id, "status": "pending"}
+CONNECTIONS_STORE: List[Dict[str, Any]] = [
+    {
+        "id": "conn_lavanya",
+        "fromId": "00000000-0000-0000-0000-000000000002",
+        "fromName": "Ananya Roy",
+        "fromEmail": "ananya.cs24@college.edu",
+        "fromYear": 3,
+        "toId": "P13",
+        "toName": "Lavanya Sundaram",
+        "toEmail": "lavanya.sundaram@college.edu",
+        "toYear": 3,
+        "topic": "covers relevant domain skills; verified year-3 mentor; 2 shared free slot(s)",
+        "status": "pending",
+        "createdAt": "Just now",
+    },
+    {
+        "id": "conn_01",
+        "fromId": "00000000-0000-0000-0000-000000000001",
+        "fromName": "Aarav Sharma",
+        "fromEmail": "aarav.cs27@college.edu",
+        "fromYear": 1,
+        "toId": "00000000-0000-0000-0000-000000000002",
+        "toName": "Ananya Roy",
+        "toEmail": "ananya.cs24@college.edu",
+        "toYear": 3,
+        "topic": "Seeking guidance on PyTorch mini project and research papers",
+        "status": "pending",
+        "createdAt": "10 mins ago",
+    },
+    {
+        "id": "conn_02",
+        "fromId": "00000000-0000-0000-0000-000000000004",
+        "fromName": "Sneha Kulkarni",
+        "fromEmail": "sneha.des25@college.edu",
+        "fromYear": 2,
+        "toId": "00000000-0000-0000-0000-000000000002",
+        "toName": "Ananya Roy",
+        "toEmail": "ananya.cs24@college.edu",
+        "toYear": 3,
+        "topic": "Hackathon teammate match for HealthTech app design",
+        "status": "accepted",
+        "createdAt": "Yesterday",
+    },
+]
+
+def create_connection(
+    from_id: str,
+    match_id: str,
+    from_name: str = "Aarav Sharma",
+    from_email: str = "aarav.cs27@college.edu",
+    from_year: int = 1,
+    to_name: str = "Peer",
+    to_year: int = 3,
+    topic: str = "Campus collaboration request",
+) -> dict:
+    conn_id = "conn_" + str(uuid.uuid4())[:8]
+    conn_data = {
+        "id": conn_id,
+        "fromId": from_id,
+        "fromName": from_name,
+        "fromEmail": from_email,
+        "fromYear": from_year,
+        "toId": match_id,
+        "toName": to_name,
+        "toEmail": f"{to_name.lower().replace(' ', '.')}@college.edu",
+        "toYear": to_year,
+        "topic": topic,
+        "status": "pending",
+        "createdAt": "Just now",
+    }
+    CONNECTIONS_STORE.insert(0, conn_data)
+    return {"connection_id": conn_id, "status": "pending", "connection": conn_data}
+
+def get_connections() -> List[Dict[str, Any]]:
+    return list(CONNECTIONS_STORE)
 
 def respond_connection(connection_id: str, status: str) -> dict:
+    for c in CONNECTIONS_STORE:
+        if c.get("id") == connection_id:
+            c["status"] = status
+            return {"connection_id": connection_id, "status": status}
     return {"connection_id": connection_id, "status": status}
 
 def save_feedback(match_id: str, feedback: str) -> dict:

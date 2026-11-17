@@ -10,6 +10,7 @@ from app.db import (
     load_profiles,
     save_request_and_matches,
     create_connection,
+    get_connections,
     respond_connection,
     save_feedback,
     get_library_items,
@@ -57,9 +58,18 @@ class MatchResponse(BaseModel):
     request_id: str
     matches: List[MatchItem]
 
+class ConnectRequestBody(BaseModel):
+    from_name: Optional[str] = "Student"
+    from_email: Optional[str] = "student@college.edu"
+    from_year: Optional[int] = 1
+    to_name: Optional[str] = "Peer"
+    to_year: Optional[int] = 3
+    topic: Optional[str] = "Campus collaboration request"
+
 class ConnectResponse(BaseModel):
     connection_id: str
     status: str
+    connection: Optional[Dict[str, Any]] = None
 
 class ConnectionRespondBody(BaseModel):
     status: str = Field(..., pattern="^(accepted|declined)$")
@@ -131,9 +141,27 @@ def match_request(
     return MatchResponse(request_id=request_id, matches=formatted_matches)
 
 @app.post("/matches/{id}/connect", response_model=ConnectResponse)
-def connect_candidate(id: str, current_user: dict = Depends(verify_token)):
+def connect_candidate(
+    id: str,
+    body: Optional[ConnectRequestBody] = None,
+    current_user: dict = Depends(verify_token),
+):
     user_id = current_user.get("sub", "anon")
-    return create_connection(from_id=user_id, match_id=id)
+    b = body or ConnectRequestBody()
+    return create_connection(
+        from_id=user_id,
+        match_id=id,
+        from_name=b.from_name or "Student",
+        from_email=b.from_email or "student@college.edu",
+        from_year=b.from_year or 1,
+        to_name=b.to_name or "Peer",
+        to_year=b.to_year or 3,
+        topic=b.topic or "Campus collaboration request",
+    )
+
+@app.get("/connections")
+def list_connections(current_user: dict = Depends(verify_token)):
+    return {"connections": get_connections()}
 
 @app.post("/connections/{id}/respond", response_model=ConnectResponse)
 def respond_to_connection(
