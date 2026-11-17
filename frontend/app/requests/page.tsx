@@ -113,7 +113,6 @@ export default function RequestsPage() {
 
   const handleCategorySelect = (selectedKind: "mentor" | "teammate" | "notes" | "others") => {
     setKind(selectedKind);
-    setText(SAMPLES_BY_KIND[selectedKind][0]);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
