@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { getCurrentUser, setCurrentUser, UserProfile } from "@/lib/supabase";
 import { StatusChip } from "@/components/StatusChip";
-import { Check, Plus, X } from "lucide-react";
+import { Check, Plus, X, Lock, Eye, EyeOff } from "lucide-react";
 
 const ALL_SLOTS = [
   { id: "wkday_aft", label: "Weekday Afternoon (2 PM - 5 PM)" },
@@ -16,6 +16,7 @@ const ALL_SLOTS = [
 export default function ProfilePage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [newSkill, setNewSkill] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
@@ -107,6 +108,37 @@ export default function ProfilePage() {
                 }}
                 className="w-full bg-white border border-slate-300 px-4 py-2 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
               />
+            </div>
+          </div>
+
+          {/* Account Password Section */}
+          <div className="pb-6 border-b border-slate-200">
+            <div className="max-w-md">
+              <label className="block font-mono text-xs text-slate-500 uppercase tracking-wider mb-2 font-medium">
+                Account Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={profile.password || ""}
+                  onChange={(e) => {
+                    setProfile({ ...profile, password: e.target.value });
+                    setSaved(false);
+                  }}
+                  placeholder="Set or change your account password..."
+                  className="w-full bg-white border border-slate-300 px-4 py-2 font-mono text-xs text-slate-900 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 cursor-pointer"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+              <p className="font-mono text-[10px] text-slate-400 mt-1">
+                Used to log in securely to your CampusLink student profile
+              </p>
             </div>
           </div>
 

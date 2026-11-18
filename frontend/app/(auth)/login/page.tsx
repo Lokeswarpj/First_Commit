@@ -17,6 +17,9 @@ import {
   ShieldCheck,
   Mail,
   User,
+  Lock,
+  Eye,
+  EyeOff,
   BookOpen,
   Plus,
   X,
@@ -37,11 +40,17 @@ export default function LoginPage() {
 
   // Sign In State
   const [signInEmail, setSignInEmail] = useState("");
+  const [signInPassword, setSignInPassword] = useState("");
+  const [showSignInPassword, setShowSignInPassword] = useState(false);
   const [signInError, setSignInError] = useState("");
 
   // Create Account State (Clean, user-entered, NO dummy defaults)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [year, setYear] = useState<number>(1);
   const [isMentor, setIsMentor] = useState(false);
   const [skills, setSkills] = useState<string[]>([]);
@@ -76,25 +85,37 @@ export default function LoginPage() {
   const handleSignInSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSignInError("");
-    const trimmed = signInEmail.trim();
+    const trimmedEmail = signInEmail.trim();
 
-    if (!trimmed || !trimmed.includes("@") || !trimmed.includes(".")) {
+    if (!trimmedEmail || !trimmedEmail.includes("@") || !trimmedEmail.includes(".")) {
       setSignInError("Please enter a valid email address.");
       return;
     }
 
-    const existingUser = findRegisteredUser(trimmed);
+    if (!signInPassword) {
+      setSignInError("Please enter your account password.");
+      return;
+    }
+
+    const existingUser = findRegisteredUser(trimmedEmail);
     if (existingUser) {
+      // Validate password if user set one
+      if (existingUser.password && existingUser.password !== signInPassword) {
+        setSignInError("Incorrect password. Please verify and try again.");
+        return;
+      }
       setCurrentUser(existingUser);
       setSuccess(true);
       setTimeout(() => router.push("/profile"), 400);
       return;
     }
 
-    // If account doesn't exist, switch to Create Account mode with email pre-filled
-    setEmail(trimmed);
+    // If account doesn't exist, switch to Create Account mode with credentials pre-filled
+    setEmail(trimmedEmail);
+    setPassword(signInPassword);
+    setConfirmPassword(signInPassword);
     setMode("create");
-    setCreateError("No existing account found with this email. Please complete your profile to register!");
+    setCreateError("No existing account found with this email. Please complete your registration below!");
   };
 
   // 2. Handle Create Account
@@ -109,6 +130,21 @@ export default function LoginPage() {
 
     if (!email.trim() || !email.includes("@") || !email.includes(".")) {
       setCreateError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!password) {
+      setCreateError("Please enter a password for your account.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setCreateError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setCreateError("Passwords do not match. Please re-enter carefully.");
       return;
     }
 
@@ -127,6 +163,7 @@ export default function LoginPage() {
       id: "usr_" + Math.random().toString(36).substring(7),
       name: name.trim(),
       college_email: email.trim(),
+      password: password,
       year,
       is_mentor: year >= 3 ? isMentor : false,
       skills,
@@ -250,6 +287,55 @@ export default function LoginPage() {
                       className="w-full bg-white border border-slate-300 px-3.5 py-2 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb]"
                     />
                     <Mail className="absolute right-3 top-2.5 w-4 h-4 text-slate-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Password & Confirm Password */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-mono text-xs text-slate-600 uppercase tracking-wider mb-1.5 font-medium">
+                    Password <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Min 6 characters"
+                      className="w-full bg-white border border-slate-300 px-3.5 py-2 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 cursor-pointer"
+                    >
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block font-mono text-xs text-slate-600 uppercase tracking-wider mb-1.5 font-medium">
+                    Confirm Password <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      required
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Re-enter password"
+                      className="w-full bg-white border border-slate-300 px-3.5 py-2 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 cursor-pointer"
+                    >
+                      {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -425,12 +511,41 @@ export default function LoginPage() {
                 <div className="relative">
                   <input
                     type="email"
+                    required
                     value={signInEmail}
                     onChange={(e) => setSignInEmail(e.target.value)}
                     placeholder="e.g. name@college.edu or gmail..."
                     className="w-full bg-white border border-slate-300 px-4 py-2.5 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
                   />
                   <Mail className="absolute right-3 top-3 w-4 h-4 text-slate-400" />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block font-mono text-xs text-slate-600 uppercase tracking-wider font-medium">
+                    Password
+                  </label>
+                  <span className="font-mono text-[10px] text-slate-400">
+                    Demo Pass: campus123
+                  </span>
+                </div>
+                <div className="relative">
+                  <input
+                    type={showSignInPassword ? "text" : "password"}
+                    required
+                    value={signInPassword}
+                    onChange={(e) => setSignInPassword(e.target.value)}
+                    placeholder="Enter your account password..."
+                    className="w-full bg-white border border-slate-300 px-4 py-2.5 font-mono text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] focus:ring-1 focus:ring-[#2563eb]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowSignInPassword(!showSignInPassword)}
+                    className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 cursor-pointer"
+                  >
+                    {showSignInPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
                 </div>
               </div>
 

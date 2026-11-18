@@ -4,6 +4,7 @@ export interface UserProfile {
   id: string;
   name: string;
   college_email: string;
+  password?: string;
   year: number;
   is_mentor: boolean;
   skills: string[];
@@ -15,6 +16,7 @@ export const DEMO_FRESHER: UserProfile = {
   id: "00000000-0000-0000-0000-000000000001",
   name: "Aarav Sharma",
   college_email: "aarav.cs27@college.edu",
+  password: "campus123",
   year: 1,
   is_mentor: false,
   skills: ["python", "c", "html", "css"],
@@ -26,6 +28,7 @@ export const DEMO_MENTOR: UserProfile = {
   id: "00000000-0000-0000-0000-000000000002",
   name: "Ananya Roy",
   college_email: "ananya.cs24@college.edu",
+  password: "campus123",
   year: 3,
   is_mentor: true,
   skills: ["python", "machine learning", "scikit-learn", "pandas", "deep learning"],
