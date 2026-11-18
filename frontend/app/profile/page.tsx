@@ -37,8 +37,9 @@ export default function ProfilePage() {
     e.preventDefault();
     if (!newSkill.trim()) return;
     const s = newSkill.trim().toLowerCase();
-    if (!profile.skills.includes(s)) {
-      setProfile({ ...profile, skills: [...profile.skills, s] });
+    const currSkills = profile.skills || [];
+    if (!currSkills.includes(s)) {
+      setProfile({ ...profile, skills: [...currSkills, s] });
       setSaved(false);
     }
     setNewSkill("");
@@ -47,7 +48,7 @@ export default function ProfilePage() {
   const handleRemoveSkill = (skillToRemove: string) => {
     setProfile({
       ...profile,
-      skills: profile.skills.filter((s) => s !== skillToRemove),
+      skills: (profile.skills || []).filter((s) => s !== skillToRemove),
     });
     setSaved(false);
   };
@@ -182,7 +183,7 @@ export default function ProfilePage() {
               Skills &amp; Technologies
             </label>
             <div className="flex flex-wrap gap-2 items-center">
-              {profile.skills.map((skill) => (
+              {(profile.skills || []).map((skill) => (
                 <span
                   key={skill}
                   className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-slate-200 font-mono text-xs text-slate-800"
@@ -196,6 +197,11 @@ export default function ProfilePage() {
                   </button>
                 </span>
               ))}
+              {(profile.skills || []).length === 0 && (
+                <span className="font-mono text-xs text-slate-400 italic">
+                  No skills added yet. Type below to add your skills.
+                </span>
+              )}
             </div>
 
             <form onSubmit={handleAddSkill} className="flex gap-2 max-w-sm pt-2">
@@ -240,7 +246,7 @@ export default function ProfilePage() {
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {ALL_SLOTS.map((slot) => {
-                const checked = profile.slots.includes(slot.id);
+                const checked = (profile.slots || []).includes(slot.id);
                 return (
                   <div
                     key={slot.id}

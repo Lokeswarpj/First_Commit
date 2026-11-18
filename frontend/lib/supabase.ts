@@ -34,6 +34,36 @@ export const DEMO_MENTOR: UserProfile = {
 };
 
 const STORAGE_KEY = "campuslink_current_user";
+const USERS_STORAGE_KEY = "campuslink_registered_users";
+
+export function getRegisteredUsers(): UserProfile[] {
+  if (typeof window === "undefined") return [DEMO_FRESHER, DEMO_MENTOR];
+  try {
+    const raw = localStorage.getItem(USERS_STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return [DEMO_FRESHER, DEMO_MENTOR];
+}
+
+export function saveRegisteredUser(user: UserProfile): void {
+  if (typeof window === "undefined") return;
+  try {
+    const users = getRegisteredUsers();
+    const filtered = users.filter(
+      (u) => u.college_email.toLowerCase() !== user.college_email.toLowerCase()
+    );
+    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify([user, ...filtered]));
+  } catch (e) {}
+}
+
+export function findRegisteredUser(email: string): UserProfile | null {
+  const users = getRegisteredUsers();
+  return (
+    users.find(
+      (u) => u.college_email.toLowerCase() === email.trim().toLowerCase()
+    ) || null
+  );
+}
 
 export function getCurrentUser(): UserProfile {
   if (typeof window === "undefined") return DEMO_FRESHER;
@@ -49,6 +79,7 @@ export function getCurrentUser(): UserProfile {
 export function setCurrentUser(user: UserProfile): void {
   if (typeof window !== "undefined") {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    saveRegisteredUser(user);
   }
 }
 
