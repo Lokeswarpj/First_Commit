@@ -120,6 +120,7 @@ export default function ProfilePage() {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
                   value={profile.password || ""}
                   onChange={(e) => {
                     setProfile({ ...profile, password: e.target.value });

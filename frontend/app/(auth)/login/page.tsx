@@ -110,12 +110,8 @@ export default function LoginPage() {
       return;
     }
 
-    // If account doesn't exist, switch to Create Account mode with credentials pre-filled
-    setEmail(trimmedEmail);
-    setPassword(signInPassword);
-    setConfirmPassword(signInPassword);
-    setMode("create");
-    setCreateError("No existing account found with this email. Please complete your registration below!");
+    // Account not found - stay on Sign In tab and inform user clearly without auto-filling Create Account
+    setSignInError("No account found with this email. Please click 'Create Account' above to register a new account.");
   };
 
   // 2. Handle Create Account
@@ -221,6 +217,10 @@ export default function LoginPage() {
             type="button"
             onClick={() => {
               setMode("create");
+              setName("");
+              setEmail("");
+              setPassword("");
+              setConfirmPassword("");
               setSignInError("");
               setCreateError("");
             }}
@@ -236,6 +236,8 @@ export default function LoginPage() {
             type="button"
             onClick={() => {
               setMode("signin");
+              setSignInEmail("");
+              setSignInPassword("");
               setSignInError("");
               setCreateError("");
             }}
@@ -253,7 +255,7 @@ export default function LoginPage() {
         <div className="card-dark bg-white border border-slate-200 shadow-sm p-6 sm:p-8 space-y-6">
           {/* ================= MODE: CREATE ACCOUNT ================= */}
           {mode === "create" && (
-            <form onSubmit={handleCreateSubmit} className="space-y-5">
+            <form onSubmit={handleCreateSubmit} autoComplete="off" className="space-y-5">
               {/* Full Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -264,6 +266,7 @@ export default function LoginPage() {
                     <input
                       type="text"
                       required
+                      autoComplete="off"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Lokeswar PJ"
@@ -281,6 +284,7 @@ export default function LoginPage() {
                     <input
                       type="email"
                       required
+                      autoComplete="off"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. student@college.edu or gmail"
@@ -301,6 +305,7 @@ export default function LoginPage() {
                     <input
                       type={showPassword ? "text" : "password"}
                       required
+                      autoComplete="new-password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Min 6 characters"
@@ -324,6 +329,7 @@ export default function LoginPage() {
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       required
+                      autoComplete="new-password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Re-enter password"
@@ -503,7 +509,7 @@ export default function LoginPage() {
 
           {/* ================= MODE: SIGN IN ================= */}
           {mode === "signin" && (
-            <form onSubmit={handleSignInSubmit} className="space-y-4">
+            <form onSubmit={handleSignInSubmit} autoComplete="off" className="space-y-4">
               <div>
                 <label className="block font-mono text-xs text-slate-600 uppercase tracking-wider mb-2 font-medium">
                   Registered Email Address
@@ -512,6 +518,7 @@ export default function LoginPage() {
                   <input
                     type="email"
                     required
+                    autoComplete="off"
                     value={signInEmail}
                     onChange={(e) => setSignInEmail(e.target.value)}
                     placeholder="e.g. name@college.edu or gmail..."
@@ -534,6 +541,7 @@ export default function LoginPage() {
                   <input
                     type={showSignInPassword ? "text" : "password"}
                     required
+                    autoComplete="current-password"
                     value={signInPassword}
                     onChange={(e) => setSignInPassword(e.target.value)}
                     placeholder="Enter your account password..."
@@ -567,9 +575,16 @@ export default function LoginPage() {
                   type="button"
                   onClick={() => {
                     setMode("create");
-                    setEmail(signInEmail);
+                    setName("");
+                    setEmail("");
+                    setPassword("");
+                    setConfirmPassword("");
+                    setSignInEmail("");
+                    setSignInPassword("");
+                    setSignInError("");
+                    setCreateError("");
                   }}
-                  className="font-mono text-xs text-[#2563eb] hover:underline"
+                  className="font-mono text-xs text-[#2563eb] hover:underline cursor-pointer"
                 >
                   New to CampusLink? Click here to Create an Account
                 </button>
