@@ -100,50 +100,7 @@ def save_request_and_matches(user_id: str, req_body: dict, matches: list) -> str
 
     return request_id
 
-CONNECTIONS_STORE: List[Dict[str, Any]] = [
-    {
-        "id": "conn_lavanya",
-        "fromId": "00000000-0000-0000-0000-000000000002",
-        "fromName": "Ananya Roy",
-        "fromEmail": "ananya.cs24@college.edu",
-        "fromYear": 3,
-        "toId": "P13",
-        "toName": "Lavanya Sundaram",
-        "toEmail": "lavanya.sundaram@college.edu",
-        "toYear": 3,
-        "topic": "covers relevant domain skills; verified year-3 mentor; 2 shared free slot(s)",
-        "status": "pending",
-        "createdAt": "Just now",
-    },
-    {
-        "id": "conn_01",
-        "fromId": "00000000-0000-0000-0000-000000000001",
-        "fromName": "Aarav Sharma",
-        "fromEmail": "aarav.cs27@college.edu",
-        "fromYear": 1,
-        "toId": "00000000-0000-0000-0000-000000000002",
-        "toName": "Ananya Roy",
-        "toEmail": "ananya.cs24@college.edu",
-        "toYear": 3,
-        "topic": "Seeking guidance on PyTorch mini project and research papers",
-        "status": "pending",
-        "createdAt": "10 mins ago",
-    },
-    {
-        "id": "conn_02",
-        "fromId": "00000000-0000-0000-0000-000000000004",
-        "fromName": "Sneha Kulkarni",
-        "fromEmail": "sneha.des25@college.edu",
-        "fromYear": 2,
-        "toId": "00000000-0000-0000-0000-000000000002",
-        "toName": "Ananya Roy",
-        "toEmail": "ananya.cs24@college.edu",
-        "toYear": 3,
-        "topic": "Hackathon teammate match for HealthTech app design",
-        "status": "accepted",
-        "createdAt": "Yesterday",
-    },
-]
+CONNECTIONS_STORE: List[Dict[str, Any]] = []
 
 def create_connection(
     from_id: str,

@@ -51,61 +51,28 @@ export default function ConnectionsPage() {
       console.warn("Could not fetch API connections:", e);
     }
 
-    // 3. Merge unique by id
+    // Filter out unwanted legacy hardcoded demo IDs (conn_lavanya, conn_01, conn_02)
+    const cleanLocal = localList.filter(
+      (c) => c.id !== "conn_lavanya" && c.id !== "conn_01" && c.id !== "conn_02"
+    );
+    const cleanApi = apiList.filter(
+      (c) => c.id !== "conn_lavanya" && c.id !== "conn_01" && c.id !== "conn_02"
+    );
+
+    // Merge and de-duplicate by (direction + toName) so multiple clicks don't create duplicate cards
     const map = new Map<string, ConnectionRecord>();
 
-    // Seed defaults if empty
-    const defaults: ConnectionRecord[] = [
-      {
-        id: "conn_lavanya",
-        fromId: cur.id,
-        fromName: cur.name,
-        fromEmail: cur.college_email,
-        fromYear: cur.year,
-        toId: "P13",
-        toName: "Lavanya Sundaram",
-        toEmail: "lavanya.sundaram@college.edu",
-        toYear: 3,
-        topic: "covers relevant domain skills; verified year-3 mentor; 2 shared free slot(s)",
-        status: "pending",
-        isOutgoing: true,
-        createdAt: "Just now",
-      },
-      {
-        id: "conn_01",
-        fromId: DEMO_FRESHER.id,
-        fromName: DEMO_FRESHER.name,
-        fromEmail: DEMO_FRESHER.college_email,
-        fromYear: DEMO_FRESHER.year,
-        toId: DEMO_MENTOR.id,
-        toName: DEMO_MENTOR.name,
-        toEmail: DEMO_MENTOR.college_email,
-        toYear: DEMO_MENTOR.year,
-        topic: "Seeking guidance on PyTorch mini project and research papers",
-        status: "pending",
-        isOutgoing: false,
-        createdAt: "10 mins ago",
-      },
-      {
-        id: "conn_02",
-        fromId: "00000000-0000-0000-0000-000000000004",
-        fromName: "Sneha Kulkarni",
-        fromEmail: "sneha.des25@college.edu",
-        fromYear: 2,
-        toId: cur.id,
-        toName: cur.name,
-        toEmail: cur.college_email,
-        toYear: cur.year,
-        topic: "Hackathon teammate match for HealthTech app design",
-        status: "accepted",
-        isOutgoing: false,
-        createdAt: "Yesterday",
-      },
-    ];
+    cleanApi.forEach((c) => {
+      const isOut = Boolean(c.isOutgoing || c.fromId === cur.id || c.fromName === cur.name);
+      const key = `${isOut ? "out" : "in"}_${c.toName}`;
+      map.set(key, { ...c, isOutgoing: isOut });
+    });
 
-    defaults.forEach((c) => map.set(c.id, c));
-    apiList.forEach((c) => map.set(c.id, { ...c, isOutgoing: c.fromId === cur.id || c.fromName === cur.name }));
-    localList.forEach((c) => map.set(c.id, c));
+    cleanLocal.forEach((c) => {
+      const isOut = Boolean(c.isOutgoing || c.fromId === cur.id || c.fromName === cur.name);
+      const key = `${isOut ? "out" : "in"}_${c.toName}`;
+      map.set(key, { ...c, isOutgoing: isOut });
+    });
 
     const merged = Array.from(map.values());
     setConnections(merged);
@@ -160,6 +127,22 @@ export default function ConnectionsPage() {
     } catch (e) {}
   };
 
+  const handleDelete = (connId: string) => {
+    const updated = connections.filter((c) => c.id !== connId);
+    setConnections(updated);
+    try {
+      localStorage.setItem(CONNECTIONS_STORAGE_KEY, JSON.stringify(updated));
+    } catch (e) {}
+  };
+
+  const handleClearAll = () => {
+    setConnections([]);
+    try {
+      localStorage.removeItem(CONNECTIONS_STORAGE_KEY);
+      localStorage.removeItem("campuslink_latest_sent_connection");
+    } catch (e) {}
+  };
+
   // Resilient determination of outgoing vs incoming
   const isOutgoingConn = (c: ConnectionRecord) => {
     if (c.isOutgoing) return true;
@@ -188,16 +171,28 @@ export default function ConnectionsPage() {
       <Navbar />
 
       <main className="max-w-[1200px] mx-auto px-6 py-12 space-y-8">
-        <div>
-          <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
-            Privacy-Preserving Contact Exchange
-          </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
-            Connection Requests
-          </h1>
-          <p className="font-mono text-xs text-slate-500 mt-1">
-            Zero-Trust Privacy: Contact information remains cryptographically shielded until both students accept.
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <p className="font-mono text-xs text-[#2563eb] uppercase tracking-widest mb-1 font-semibold">
+              Privacy-Preserving Contact Exchange
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+              Connection Requests
+            </h1>
+            <p className="font-mono text-xs text-slate-500 mt-1">
+              Zero-Trust Privacy: Contact information remains cryptographically shielded until both students accept.
+            </p>
+          </div>
+
+          {connections.length > 0 && (
+            <button
+              onClick={handleClearAll}
+              className="px-3 py-1.5 border border-slate-300 text-slate-600 hover:text-red-600 hover:border-red-300 font-mono text-xs transition-colors self-start sm:self-auto"
+              title="Clear all stored connections"
+            >
+              Clear All Connections
+            </button>
+          )}
         </div>
 
         {/* Recently Sent Notification Banner */}
@@ -340,7 +335,16 @@ export default function ConnectionsPage() {
 
                   {/* Right Column / Actions */}
                   <div className="font-mono text-xs text-slate-500 shrink-0 flex flex-col items-start md:items-end gap-3">
-                    <span>Sent {conn.createdAt}</span>
+                    <div className="flex items-center gap-3">
+                      <span>Sent {conn.createdAt}</span>
+                      <button
+                        onClick={() => handleDelete(conn.id)}
+                        className="text-slate-400 hover:text-red-500 text-[11px] underline transition-colors"
+                        title="Remove this connection card"
+                      >
+                        Remove
+                      </button>
+                    </div>
 
                     {/* Incoming Actions: Accept / Decline */}
                     {!outgoing && conn.status === "pending" && (
