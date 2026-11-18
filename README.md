@@ -19,7 +19,7 @@ Every fresher and college sophomore struggles to find reliable project teammates
 2. **Explainable AI Matching**: Displays candidate scores out of 100 with four transparent progress bars (`Semantic 45%`, `Coverage 30%`, `Availability 15%`, `Fit 10%`) and plain-English "Why this match" reasons.
 3. **Privacy-Preserving Contact Exchange**: Contact details (email/phone) remain shielded by Zero-Trust Row Level Security until a recipient explicitly accepts the connection request.
 4. **Verified Notes Library**: Curated, peer-reviewed subject notes, formula sheets, and placement preparation handbooks.
-5. **Dark Tech Brutalist Aesthetic**: High-contrast `#000` deep black theme, zero-radius buttons, 100px status pills, monospace telemetry, and subtle radial accent glows.
+5. **Crisp Editorial Light Theme**: Ultra-clean white and soft off-white (`#f8fafc`) background, slate-900 typography, cobalt blue (`#2563eb`) and emerald green (`#16a34a`) accents, 1px light borders, zero-radius buttons, and monospace telemetry.
 
 ---
 
